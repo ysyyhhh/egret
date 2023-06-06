@@ -10,6 +10,12 @@
     <meta name="screen-orientation" content="portrait" />
     <meta name="x5-fullscreen" content="true" />
     <meta name="360-fullscreen" content="true" />
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" /> -->
     <style>
         html, body {
             -ms-touch-action: none;
@@ -20,6 +26,9 @@
             height: 100%;
         }
     </style>
+    <!-- <script src="libs/modules/egret/egret.js"></script>
+    <script src="libs/modules/egret/egret.web.js"></script> -->
+    <script src="bot.js"></script>
 </head>
 
 <body>
@@ -34,7 +43,10 @@
          data-show-fps="false" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
     </div>
+    <script src="https://telegram.org/js/games.js"></script>
+</body>
 <script>
+    // egret.Resource.setCachingEnabled(false);
     var loadScript = function (list, callback) {
         var loaded = 0;
         var loadNext = function () {
@@ -54,7 +66,7 @@
     var loadSingleScript = function (src, callback) {
         var s = document.createElement('script');
         s.async = false;
-        s.src = src;
+        s.src = src+"?v=" + Math.random();
         s.addEventListener('load', function () {
             s.parentNode.removeChild(s);
             s.removeEventListener('load', arguments.callee, false);
@@ -62,13 +74,14 @@
         }, false);
         document.body.appendChild(s);
     };
-
+    
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './manifest.json?v=' + Math.random(), true);
     xhr.addEventListener("load", function () {
         var manifest = JSON.parse(xhr.response);
         var list = manifest.initial.concat(manifest.game);
         loadScript(list, function () {
+            // console.log("loadScript complete")
             /**
              * {
              * "renderMode":, //Engine rendering mode, "canvas" or "webgl"
@@ -77,6 +90,7 @@
              * "calculateCanvasScaleFactor": //a function return canvas scale factor
              * }
              **/
+            // 
             egret.runEgret({ renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor:function(context) {
                 var backingStore = context.backingStorePixelRatio ||
                     context.webkitBackingStorePixelRatio ||
@@ -90,6 +104,4 @@
     });
     xhr.send(null);
 </script>
-</body>
-
 </html>

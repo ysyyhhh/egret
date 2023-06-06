@@ -48,9 +48,9 @@ var game;
             this.levelLabel.text = "关卡" + this.sceneLevel.toString();
             this.scoreLabel.text = this.curScore.toString();
             this.bestScoreLabel.text = this.bestScore.toString();
-            this.chipsLabel.text = "+" + this.winChips.toString();
-            egret.Tween.get(this.doubleReceiveBtn).to({ rotation: 20 }, 100, egret.Ease.sineIn).to({ rotation: -20 }, 100, egret.Ease.sineOut).to({ rotation: 0 }, 80);
-            egret.Tween.get(this.doubleReceiveBtn).to({ scaleX: 1.5, scaleY: 1.5 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
+            // this.chipsLabel.text = "+" + this.winChips.toString();
+            // egret.Tween.get(this.doubleReceiveBtn).to({ rotation: 20 }, 100, egret.Ease.sineIn).to({ rotation: -20 }, 100, egret.Ease.sineOut).to({ rotation: 0 }, 80);
+            // egret.Tween.get(this.doubleReceiveBtn).to({ scaleX: 1.5, scaleY: 1.5 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
         };
         //-----------------------------------------------------------------------------
         GameFailView.prototype.destroy = function () {
@@ -60,34 +60,34 @@ var game;
         };
         //-----------------------------------------------------------------------------
         GameFailView.prototype.onClickTap = function (e) {
-            if (e.target == this.doubleReceiveBtn) {
-                var self_1 = this;
-                if (!this.isVideoShowed) {
-                    this.isVideoShowed = true;
-                    uniLib.SoundMgr.instance.pauseBgMusic();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showVideoAdvertisement(null, this.onVideoAdCallback, this);
-                    else
-                        uniLib.AdPlat.instance.showRewardedVideo(this.onVideoAdCallback, this);
-                    this.showVideoTimeout = egret.setTimeout(function () {
-                        self_1.isVideoShowed = false;
-                        if (self_1.showVideoTimeout) {
-                            egret.clearTimeout(self_1.showVideoTimeout);
-                            self_1.showVideoTimeout = null;
-                        }
-                    }, this, 3000);
-                }
-            }
-            else if (e.target == this.restartBtn) {
+            // if (e.target == this.doubleReceiveBtn) {
+            //     var self_1 = this;
+            //     if (!this.isVideoShowed) {
+            //         this.isVideoShowed = true;
+            //         uniLib.SoundMgr.instance.pauseBgMusic();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showVideoAdvertisement(null, this.onVideoAdCallback, this);
+            //         else
+            //             uniLib.AdPlat.instance.showRewardedVideo(this.onVideoAdCallback, this);
+            //         this.showVideoTimeout = egret.setTimeout(function () {
+            //             self_1.isVideoShowed = false;
+            //             if (self_1.showVideoTimeout) {
+            //                 egret.clearTimeout(self_1.showVideoTimeout);
+            //                 self_1.showVideoTimeout = null;
+            //             }
+            //         }, this, 3000);
+            //     }
+            // }
+            if (e.target == this.restartBtn) {
                 GX.PopUpManager.removePopUp(this);
                 Main.instance.loadGameScene(1);
             }
-            else if (e.target == this.homeBtn) {
-                GX.PopUpManager.removePopUp(this);
-                Main.instance.changeToMainScene();
-            }
+            // else if (e.target == this.homeBtn) {
+            //     GX.PopUpManager.removePopUp(this);
+            //     Main.instance.changeToMainScene();
+            // }
             else if (e.target == this.shareBtn) {
-                uniLib.AdPlat.instance.share();
+                bot.share_and_set_score(this.curScore);
             }
         };
         //-----------------------------------------------------------------------------
@@ -104,7 +104,7 @@ var game;
                 game.GameInfo.instance.curChips += addChips;
                 game.GameInfo.save();
                 this.winChips += addChips;
-                this.chipsLabel.text = "+" + this.winChips.toString();
+                // this.chipsLabel.text = "+" + this.winChips.toString();
                 uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
                 GX.PopUpManager.addPopUp(new game.RewardView(this.winChips), true, 0.6, GX.PopUpEffect.CENTER_S);
             }
@@ -121,4 +121,3 @@ var game;
     game.GameFailView = GameFailView;
     __reflect(GameFailView.prototype, "game.GameFailView");
 })(game || (game = {}));
-//# sourceMappingURL=GameFailView.js.map

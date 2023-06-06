@@ -8,7 +8,7 @@
 		</e:Group>
 	</e:Group>
 	<e:Group id="bottomLayer" left="0" right="0" height="166" visible="true" top="122">
-		<e:Image source="bg_top" left="0" right="0" top="0" scale9Grid="40,36,3,4" height="212" visible="false"/>
+		<!-- <e:Image source="bg_top" left="0" right="0" top="0" scale9Grid="40,36,3,4" height="212" visible="false"/>
 		<e:Group width="130" top="10" bottom="0" left="15">
 		<ui:Button id="reduceBtn" interactive="bright" horizontalCenter="0" verticalCenter="18" anchorOffsetX="45" anchorOffsetY="45">
 			<ui:skinName>
@@ -18,10 +18,8 @@
 			</e:Skin>
 			</ui:skinName>
 		</ui:Button>
-		<e:Image source="gold" scaleX="0.5" scaleY="0.5" horizontalCenter="-32" verticalCenter="-48.5"/>
-		<e:Label id="reduceLabel" text="300" horizontalCenter="15.5" verticalCenter="-48"/>
-		</e:Group>
-		<e:Group width="130" top="10" bottom="0" left="146">
+		</e:Group> -->
+		<!-- <e:Group width="130" top="10" bottom="0" left="146">
 		<ui:Button id="addBtn" interactive="bright" horizontalCenter="0" verticalCenter="18" anchorOffsetX="45" anchorOffsetY="45">
 			<ui:skinName>
 			<e:Skin states="up,down,disabled">
@@ -30,16 +28,14 @@
 			</e:Skin>
 			</ui:skinName>
 		</ui:Button>
-		<e:Image source="gold" scaleX="0.5" scaleY="0.5" horizontalCenter="-32" verticalCenter="-48.5"/>
-		<e:Label id="addLabel" text="300" horizontalCenter="15.5" verticalCenter="-48"/>
-		</e:Group>
-		<e:Group width="171" height="62" verticalCenter="0" visible="true" right="36">
-		<e:Image source="kk_huobi" visible="true" verticalCenter="0"/>
-		<e:Image verticalCenter="0" left="-7" source="gold"/>
-		<e:Group width="109" anchorOffsetX="0" anchorOffsetY="0" x="47" height="62" y="0">
-			<e:BitmapLabel id="chipsLabel" font="chips_font_fnt" text="0" verticalCenter="0" horizontalCenter="0"/>
-		</e:Group>
-		</e:Group>
+		</e:Group> -->
+		<!-- <e:Group width="171" height="62" verticalCenter="0" visible="true" right="36">
+			<e:Image source="kk_huobi" visible="true" verticalCenter="0"/>
+			<e:Image verticalCenter="0" left="-7" source="gold"/>
+			<e:Group width="109" anchorOffsetX="0" anchorOffsetY="0" x="47" height="62" y="0">
+				<e:BitmapLabel id="chipsLabel" font="chips_font_fnt" text="0" verticalCenter="0" horizontalCenter="0"/>
+			</e:Group>
+		</e:Group> -->
 		<e:Group height="111" anchorOffsetY="0" left="287" right="221" verticalCenter="0">
 		<e:Group width="110" height="30" x="25" y="27">
 			<e:Image source="level_text" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
@@ -75,16 +71,32 @@
 				</e:Group>
 				</e:Group>
 				<e:Group width="200" top="0" bottom="0" y="10" horizontalCenter="82">
-				<e:Image top="7" horizontalCenter="0" source="fenshu_text"/>
-				<e:Group width="164" height="43" verticalCenter="20" horizontalCenter="0">
-					<e:Image source="kk_huobi" x="0" y="0" scaleX="1" scaleY="1"/>
-					<e:Label text="99" id="scoreLabel" textColor="0x5660B9" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0" verticalCenter="0"/>
+					<e:Image top="7" horizontalCenter="0" source="fenshu_text"/>
+					<e:Group width="164" height="43" verticalCenter="20" horizontalCenter="0">
+						<e:Image source="kk_huobi" x="0" y="0" scaleX="1" scaleY="1"/>
+						<e:Label text="99" id="scoreLabel" textColor="0x5660B9" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0" verticalCenter="0"/>
+					</e:Group>
 				</e:Group>
-				</e:Group>
-				<ui:Button id="settingBtn" interactive="bright" verticalCenter="0" left="35">
+				<!-- <ui:Button id="settingBtn" interactive="bright" verticalCenter="0" left="35">
 					<ui:skinName>
 						<e:Skin states="up,down,disabled">
 						<e:Image width="100%" height="100%" source="btn_shezhi"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+						</e:Skin>
+					</ui:skinName>
+				</ui:Button> -->
+				<ui:Button id="restartBtn" interactive="bright"  left="35" top="0"> 
+					<ui:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="39%" height="39%"  source="btn_start"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+						</e:Skin>
+					</ui:skinName>
+				</ui:Button>
+				<ui:Button id="shareBtn" interactive="bright"  right="35" top="0">
+					<ui:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="70%" height="70%" source="btn_fenxiang"/>
 						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 						</e:Skin>
 					</ui:skinName>

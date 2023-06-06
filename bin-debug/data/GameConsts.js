@@ -102,4 +102,3 @@ var game;
     game.GameConsts = GameConsts;
     __reflect(GameConsts.prototype, "game.GameConsts");
 })(game || (game = {}));
-//# sourceMappingURL=GameConsts.js.map

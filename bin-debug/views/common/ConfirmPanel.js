@@ -58,4 +58,3 @@ var game;
     game.ConfirmPanel = ConfirmPanel;
     __reflect(ConfirmPanel.prototype, "game.ConfirmPanel");
 })(game || (game = {}));
-//# sourceMappingURL=ConfirmPanel.js.map

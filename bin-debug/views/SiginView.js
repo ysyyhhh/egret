@@ -183,4 +183,3 @@ var game;
     game.SiginView = SiginView;
     __reflect(SiginView.prototype, "game.SiginView");
 })(game || (game = {}));
-//# sourceMappingURL=SiginView.js.map

@@ -31,19 +31,18 @@ var game;
             _super.prototype.destroy.call(this);
         };
         MenuBar.prototype.updateGameInfo = function () {
-            this.chipsLabel.text = game.GameInfo.instance.curChips.toString();
+            // this.chipsLabel.text = game.GameInfo.instance.curChips.toString();
         };
         MenuBar.prototype.init = function () {
             this.updateGameInfo();
         };
         MenuBar.prototype.onClickTap = function (e) {
-            if (e.target == this.settingBtn) {
-                GX.PopUpManager.addPopUp(new game.SettingView(), true, 0.8);
-            }
+            // if (e.target == this.settingBtn) {
+            //     GX.PopUpManager.addPopUp(new game.SettingView(), true, 0.8);
+            // }
         };
         return MenuBar;
     }(ui.BaseUI));
     game.MenuBar = MenuBar;
     __reflect(MenuBar.prototype, "game.MenuBar");
 })(game || (game = {}));
-//# sourceMappingURL=MenuBar.js.map

@@ -23,4 +23,3 @@ var table;
     table.TableSkinConfig = TableSkinConfig;
     __reflect(TableSkinConfig.prototype, "table.TableSkinConfig");
 })(table || (table = {}));
-//# sourceMappingURL=TableSkinConfig.js.map

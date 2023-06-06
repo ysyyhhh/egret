@@ -58,4 +58,3 @@ var game;
     game.PublicLoadingView = PublicLoadingView;
     __reflect(PublicLoadingView.prototype, "game.PublicLoadingView");
 })(game || (game = {}));
-//# sourceMappingURL=PublicLoadingView.js.map

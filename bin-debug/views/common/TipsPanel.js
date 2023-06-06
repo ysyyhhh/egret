@@ -28,4 +28,3 @@ var game;
     game.TipsPanel = TipsPanel;
     __reflect(TipsPanel.prototype, "game.TipsPanel");
 })(game || (game = {}));
-//# sourceMappingURL=TipsPanel.js.map

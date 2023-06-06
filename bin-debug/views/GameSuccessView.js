@@ -78,4 +78,3 @@ var game;
     game.GameSuccessView = GameSuccessView;
     __reflect(GameSuccessView.prototype, "game.GameSuccessView");
 })(game || (game = {}));
-//# sourceMappingURL=GameSuccessView.js.map

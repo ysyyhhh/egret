@@ -23,4 +23,3 @@ var table;
     table.TableBackgroundConfig = TableBackgroundConfig;
     __reflect(TableBackgroundConfig.prototype, "table.TableBackgroundConfig");
 })(table || (table = {}));
-//# sourceMappingURL=TableBackgroundConfig.js.map

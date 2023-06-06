@@ -126,4 +126,3 @@ var game;
     game.SettingView = SettingView;
     __reflect(SettingView.prototype, "game.SettingView");
 })(game || (game = {}));
-//# sourceMappingURL=SettingView.js.map

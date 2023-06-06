@@ -119,4 +119,3 @@ var game;
     game.DebugWebPlatform = DebugWebPlatform;
     __reflect(DebugWebPlatform.prototype, "game.DebugWebPlatform");
 })(game || (game = {}));
-//# sourceMappingURL=DebugWebPlatform.js.map

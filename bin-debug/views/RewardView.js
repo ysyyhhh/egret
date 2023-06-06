@@ -54,11 +54,11 @@ var game;
         };
         RewardView.prototype.init = function () {
             this.chipsIcon.visible = false;
-            this.chipsLabel.visible = false;
+            // this.chipsLabel.visible = false;
             if (this.winChips > 0) {
                 this.chipsIcon.visible = true;
-                this.chipsLabel.visible = true;
-                this.chipsLabel.text = "x" + this.winChips.toString();
+                // this.chipsLabel.visible = true;
+                // this.chipsLabel.text = "x" + this.winChips.toString();
             }
             egret.Tween.get(this.bg, { loop: true }).to({ rotation: 360 }, 3000);
             if (this.delayTime > 0) {
@@ -218,4 +218,3 @@ var game;
     game.RewardView = RewardView;
     __reflect(RewardView.prototype, "game.RewardView");
 })(game || (game = {}));
-//# sourceMappingURL=RewardView.js.map

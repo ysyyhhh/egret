@@ -19,4 +19,3 @@ var game;
     game.Config = Config;
     __reflect(Config.prototype, "game.Config");
 })(game || (game = {}));
-//# sourceMappingURL=Config.js.map

@@ -1,3 +1,4 @@
+//test
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
@@ -141,19 +142,19 @@ var Main = (function (_super) {
         curResVer = curResVer + game.Config.CURRENT_RES_VERSION;
         curResVer = uniLib.Utils.MD5(curResVer);
         var oldResVersion = uniLib.Utils.getLocalStorage("MAGICDIGIT_RESVERSION", "");
-        if (oldResVersion != curResVer) {
+        // if (oldResVersion != curResVer) {
             console.log("清除资源缓存");
             window.platform.clearResCache();
             uniLib.Utils.setLocalStorage("MAGICDIGIT_RESVERSION", curResVer);
-        }
+        // }
         var curStorageVer = game.Config.CURRENT_GAMEINFO_VERSION;
         curStorageVer = uniLib.Utils.MD5(curStorageVer);
         var oldStorageVersion = uniLib.Utils.getLocalStorage("MAGICDIGIT_GAMEINFO_VERSION", "");
-        if (oldStorageVersion != curStorageVer) {
+        // if (oldStorageVersion != curStorageVer) {
             console.log("清除GameInfo信息");
             game.GameInfo.clearStorage();
             uniLib.Utils.setLocalStorage("MAGICDIGIT_GAMEINFO_VERSION", curStorageVer);
-        }
+        // }
         this.loadResConfig();
     };
     Main.prototype.initResource = function () {
@@ -339,4 +340,4 @@ var Main = (function (_super) {
     return Main;
 }(egret.DisplayObjectContainer));
 __reflect(Main.prototype, "Main");
-//# sourceMappingURL=Main.js.map
+// 7777

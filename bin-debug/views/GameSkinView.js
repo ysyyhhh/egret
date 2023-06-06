@@ -551,4 +551,3 @@ var game;
     }(ui.ItemRenderer));
     __reflect(MantleItemRender.prototype, "MantleItemRender");
 })(game || (game = {}));
-//# sourceMappingURL=GameSkinView.js.map

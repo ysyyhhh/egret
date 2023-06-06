@@ -64,4 +64,3 @@ var game;
     game.MainScene = MainScene;
     __reflect(MainScene.prototype, "game.MainScene");
 })(game || (game = {}));
-//# sourceMappingURL=MainScene.js.map

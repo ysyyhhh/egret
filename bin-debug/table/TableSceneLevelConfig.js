@@ -23,4 +23,3 @@ var table;
     table.TableSceneLevelConfig = TableSceneLevelConfig;
     __reflect(TableSceneLevelConfig.prototype, "table.TableSceneLevelConfig");
 })(table || (table = {}));
-//# sourceMappingURL=TableSceneLevelConfig.js.map

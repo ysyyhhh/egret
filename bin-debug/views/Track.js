@@ -65,4 +65,3 @@ var game;
     game.Track = Track;
     __reflect(Track.prototype, "game.Track");
 })(game || (game = {}));
-//# sourceMappingURL=Track.js.map

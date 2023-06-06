@@ -46,4 +46,3 @@ var game;
     game.TableData = TableData;
     __reflect(TableData.prototype, "game.TableData");
 })(game || (game = {}));
-//# sourceMappingURL=TableData.js.map

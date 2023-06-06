@@ -60,22 +60,24 @@ var game;
             }
             this.skin["adScrollGroup"].visible = false;
             this.skin["adScrollGroupEx"].visible = false;
-            this.onLoadAds();
+            var maxSceneLevel = game.GameInfo.instance.maxSceneLevel;
+            Main.instance.loadGameScene(maxSceneLevel + 1);
+            // this.onLoadAds();
         };
         //------------------------------------------------------------------------------
         MainView.prototype.onLoadAds = function () {
-            if (this.skin["adScrollGroupEx"].visible == true || this.skin["adScrollGroup"].visible == true)
-                return;
-            if (uniLib.AdConfig.itemDataList && uniLib.AdConfig.itemDataList.length > 0) {
-                if (game.GameConsts.is_iPhoneX) {
-                    this.skin["adScrollGroupEx"].visible = true;
-                    this.adScrollViewEx.load(1, true, 0, "AdResultItemSkin", true, true);
-                }
-                else {
-                    this.skin["adScrollGroup"].visible = true;
-                    this.adScrollView.load(1, false, 0, "AdItemNotTitleSkin", true, true);
-                }
-            }
+            // if (this.skin["adScrollGroupEx"].visible == true || this.skin["adScrollGroup"].visible == true)
+            //     return;
+            // if (uniLib.AdConfig.itemDataList && uniLib.AdConfig.itemDataList.length > 0) {
+            //     if (game.GameConsts.is_iPhoneX) {
+            //         this.skin["adScrollGroupEx"].visible = true;
+            //         this.adScrollViewEx.load(1, true, 0, "AdResultItemSkin", true, true);
+            //     }
+            //     else {
+            //         this.skin["adScrollGroup"].visible = true;
+            //         this.adScrollView.load(1, false, 0, "AdItemNotTitleSkin", true, true);
+            //     }
+            // }
         };
         //------------------------------------------------------------------------------
         MainView.prototype.onClickTap = function (e) {
@@ -103,4 +105,3 @@ var game;
     game.MainView = MainView;
     __reflect(MainView.prototype, "game.MainView");
 })(game || (game = {}));
-//# sourceMappingURL=MainView.js.map

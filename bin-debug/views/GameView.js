@@ -99,7 +99,7 @@ var game;
         });
         //------------------------------------------------------------------------------
         GameView.prototype.updateGameInfo = function () {
-            this.chipsLabel.text = game.GameInfo.instance.curChips.toString();
+            // this.chipsLabel.text = game.GameInfo.instance.curChips.toString();
             this.scoreLabel.text = game.GameInfo.instance.curScore.toString();
             this.stepLabel.text = this.curStep.toString();
         };
@@ -1021,9 +1021,12 @@ var game;
         };
         //------------------------------------------------------------------------------
         GameView.prototype.checkWin = function () {
+            console.log("checkWin")
             var isWin = true;
+            if(this.roundItems.length <= 0) return
             for (var i = 0; i < this.roundItems.length; i++) {
                 var item = this.roundItems[i];
+                console.log(item)
                 if (item.score > 0) {
                     isWin = false;
                 }
@@ -1045,8 +1048,10 @@ var game;
                 userScore = game.GameInfo.instance.curScore;
             }
             var userData = new Array();
+            console.log("?????")
             userData.push({ key: "score", value: userScore.toString() });
-            window.platform.customInterface("friendrankUpdateData", userData);
+            userData.push({ key: "score", value: "123" });
+            // window.platform.customInterface("friendrankUpdateData", userData);
         };
         //------------------------------------------------------------------------------
         GameView.prototype.updateFrame = function () {
@@ -1093,18 +1098,19 @@ var game;
         };
         //------------------------------------------------------------------------------
         GameView.prototype.showTipsAction = function () {
-            egret.Tween.removeTweens(this.addBtn);
-            egret.Tween.removeTweens(this.reduceBtn);
-            this.addBtn.scaleX = this.addBtn.scaleY = 1;
-            this.reduceBtn.scaleX = this.reduceBtn.scaleY = 1;
-            egret.Tween.get(this.addBtn, { loop: true }).to({ scaleX: 1.2, scaleY: 1.2 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
-            egret.Tween.get(this.reduceBtn, { loop: true }).to({ scaleX: 1.2, scaleY: 1.2 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
+            // egret.Tween.removeTweens(this.addBtn);
+            // egret.Tween.removeTweens(this.reduceBtn);
+            // this.addBtn.scaleX = this.addBtn.scaleY = 1;
+            // this.reduceBtn.scaleX = this.reduceBtn.scaleY = 1;
+            // egret.Tween.get(this.addBtn, { loop: true }).to({ scaleX: 1.2, scaleY: 1.2 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
+            // egret.Tween.get(this.reduceBtn, { loop: true }).to({ scaleX: 1.2, scaleY: 1.2 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
+        
         };
         GameView.prototype.hideTipsAction = function () {
-            egret.Tween.removeTweens(this.addBtn);
-            egret.Tween.removeTweens(this.reduceBtn);
-            this.addBtn.scaleX = this.addBtn.scaleY = 1;
-            this.reduceBtn.scaleX = this.reduceBtn.scaleY = 1;
+            // egret.Tween.removeTweens(this.addBtn);
+            // egret.Tween.removeTweens(this.reduceBtn);
+            // this.addBtn.scaleX = this.addBtn.scaleY = 1;
+            // this.reduceBtn.scaleX = this.reduceBtn.scaleY = 1;
         };
         //------------------------------------------------------------------------------
         GameView.prototype.onTouchBegin = function (e) {
@@ -1307,110 +1313,133 @@ var game;
             this.lastTipsTime = (new Date()).valueOf();
             this.hideTipsAction();
             var self = this;
-            if (e.target == this.addBtn) {
-                var addStep_1 = game.TableData.tableGameConfig.chipsRewardStep[0];
-                var needChips_1 = game.TableData.tableGameConfig.chipsRewardStep[1];
-                if (game.GameInfo.instance.curChips >= needChips_1) {
-                    uniLib.AdPlat.instance.showBanner();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showBannerAdvertisement();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showNativeAdvertisement();
-                    GX.Tips.showPopup("是否确定花费" + needChips_1 + "金币增加" + addStep_1 + "步", function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                        game.GameInfo.instance.curChips -= needChips_1;
-                        game.GameInfo.save();
-                        self.curStep += addStep_1;
-                        uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-                    }, function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                    }, this, true);
+            // if (e.target == this.addBtn) {
+            //     var addStep_1 = game.TableData.tableGameConfig.chipsRewardStep[0];
+            //     var needChips_1 = game.TableData.tableGameConfig.chipsRewardStep[1];
+            //     if (game.GameInfo.instance.curChips >= needChips_1) {
+            //         uniLib.AdPlat.instance.showBanner();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showBannerAdvertisement();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showNativeAdvertisement();
+            //         GX.Tips.showPopup("是否确定花费" + needChips_1 + "金币增加" + addStep_1 + "步", function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //             game.GameInfo.instance.curChips -= needChips_1;
+            //             game.GameInfo.save();
+            //             self.curStep += addStep_1;
+            //             uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
+            //         }, function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //         }, this, true);
+            //     }
+            //     else {
+            //         uniLib.AdPlat.instance.showBanner();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showBannerAdvertisement();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showNativeAdvertisement();
+            //         GX.Tips.showPopup("金币不足，是否观看视频增加" + addStep_1 + "步", function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //             if (!_this.isVideoShowed) {
+            //                 _this.isVideoShowed = true;
+            //                 uniLib.SoundMgr.instance.pauseBgMusic();
+            //                 if (uniLib.Global.isVivogame)
+            //                     window.platform.showVideoAdvertisement(null, _this.onVideoAdCallback, _this);
+            //                 else
+            //                     uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallback, _this);
+            //                 _this.showVideoTimeout = egret.setTimeout(function () {
+            //                     self.isVideoShowed = false;
+            //                     if (self.showVideoTimeout) {
+            //                         egret.clearTimeout(self.showVideoTimeout);
+            //                         self.showVideoTimeout = null;
+            //                     }
+            //                 }, _this, 3000);
+            //             }
+            //         }, function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //         }, this, true);
+            //     }
+            // }
+            // else if (e.target == this.reduceBtn) {
+            //     var needChips_2 = game.TableData.tableGameConfig.chipsReduceReward;
+            //     if (game.GameInfo.instance.curChips >= needChips_2) {
+            //         uniLib.AdPlat.instance.showBanner();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showBannerAdvertisement();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showNativeAdvertisement();
+            //         GX.Tips.showPopup("是否确定花费" + needChips_2 + "金币任意消除一个色块", function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //             game.GameInfo.instance.curChips -= needChips_2;
+            //             game.GameInfo.save();
+            //             _this.setFreeReduce(true);
+            //             uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
+            //         }, function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //         }, this, true);
+            //     }
+            //     else {
+            //         uniLib.AdPlat.instance.showBanner();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showBannerAdvertisement();
+            //         if (uniLib.Global.isVivogame)
+            //             window.platform.showNativeAdvertisement();
+            //         GX.Tips.showPopup("金币不足，是否观看视频任意消除一次", function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //             if (!_this.isVideoShowed) {
+            //                 _this.isVideoShowed = true;
+            //                 uniLib.SoundMgr.instance.pauseBgMusic();
+            //                 if (uniLib.Global.isVivogame)
+            //                     window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForReduce, _this);
+            //                 else
+            //                     uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallbackForReduce, _this);
+            //                 _this.showVideoTimeout = egret.setTimeout(function () {
+            //                     self.isVideoShowed = false;
+            //                     if (self.showVideoTimeout) {
+            //                         egret.clearTimeout(self.showVideoTimeout);
+            //                         self.showVideoTimeout = null;
+            //                     }
+            //                 }, _this, 3000);
+            //             }
+            //         }, function () {
+            //             uniLib.AdPlat.instance.hideBanner();
+            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
+            //         }, this, true);
+            //     }
+            // }
+            // if (e.target == this.settingBtn) {
+            //     // GX.PopUpManager.addPopUp(new game.SettingView(), true, 0.8);
+            //     // console.log("autoFindPaths", this.autoFindPaths());
+            // }
+            if (e.target == this.restartBtn) {
+                // GX.PopUpManager.removePopUp(this);
+                // GX.PopUpManager.removePopUp(this, GX.PopUpEffect.CENTER);
+                var winChips = game.GameInfo.instance.winChips;
+                winChips += game.GameInfo.instance.config.winChips;
+                game.GameInfo.instance.curChips = game.GameInfo.instance.curChips + winChips;
+                game.GameInfo.instance.winChips = 0;
+                game.GameInfo.instance.needGuide = false;
+                game.GameInfo.instance.sceneLevel = 0;
+                game.GameInfo.instance.maxSceneLevel = 0;
+                if (game.GameInfo.instance.maxScore < game.GameInfo.instance.curScore) {
+                    game.GameInfo.instance.maxScore = game.GameInfo.instance.curScore;
                 }
-                else {
-                    uniLib.AdPlat.instance.showBanner();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showBannerAdvertisement();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showNativeAdvertisement();
-                    GX.Tips.showPopup("金币不足，是否观看视频增加" + addStep_1 + "步", function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                        if (!_this.isVideoShowed) {
-                            _this.isVideoShowed = true;
-                            uniLib.SoundMgr.instance.pauseBgMusic();
-                            if (uniLib.Global.isVivogame)
-                                window.platform.showVideoAdvertisement(null, _this.onVideoAdCallback, _this);
-                            else
-                                uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallback, _this);
-                            _this.showVideoTimeout = egret.setTimeout(function () {
-                                self.isVideoShowed = false;
-                                if (self.showVideoTimeout) {
-                                    egret.clearTimeout(self.showVideoTimeout);
-                                    self.showVideoTimeout = null;
-                                }
-                            }, _this, 3000);
-                        }
-                    }, function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                    }, this, true);
-                }
+                game.GameInfo.instance.clearGameMatchup();
+                game.GameInfo.instance.curScore = 0;
+                // uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
+                game.GameInfo.save();
+                Main.instance.loadGameScene(1);
             }
-            else if (e.target == this.reduceBtn) {
-                var needChips_2 = game.TableData.tableGameConfig.chipsReduceReward;
-                if (game.GameInfo.instance.curChips >= needChips_2) {
-                    uniLib.AdPlat.instance.showBanner();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showBannerAdvertisement();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showNativeAdvertisement();
-                    GX.Tips.showPopup("是否确定花费" + needChips_2 + "金币任意消除一个色块", function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                        game.GameInfo.instance.curChips -= needChips_2;
-                        game.GameInfo.save();
-                        _this.setFreeReduce(true);
-                        uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-                    }, function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                    }, this, true);
-                }
-                else {
-                    uniLib.AdPlat.instance.showBanner();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showBannerAdvertisement();
-                    if (uniLib.Global.isVivogame)
-                        window.platform.showNativeAdvertisement();
-                    GX.Tips.showPopup("金币不足，是否观看视频任意消除一次", function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                        if (!_this.isVideoShowed) {
-                            _this.isVideoShowed = true;
-                            uniLib.SoundMgr.instance.pauseBgMusic();
-                            if (uniLib.Global.isVivogame)
-                                window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForReduce, _this);
-                            else
-                                uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallbackForReduce, _this);
-                            _this.showVideoTimeout = egret.setTimeout(function () {
-                                self.isVideoShowed = false;
-                                if (self.showVideoTimeout) {
-                                    egret.clearTimeout(self.showVideoTimeout);
-                                    self.showVideoTimeout = null;
-                                }
-                            }, _this, 3000);
-                        }
-                    }, function () {
-                        uniLib.AdPlat.instance.hideBanner();
-                        // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-                    }, this, true);
-                }
-            }
-            else if (e.target == this.settingBtn) {
-                GX.PopUpManager.addPopUp(new game.SettingView(), true, 0.8);
-                // console.log("autoFindPaths", this.autoFindPaths());
+            else if (e.target == this.shareBtn) { 
+                console.log(this.score)
+                bot.set_and_share_score(this.score);
             }
             else if (e.target == this.skin["maskGroup"]) {
                 this.hideGuide();
@@ -1553,4 +1582,3 @@ var game;
     game.GameView = GameView;
     __reflect(GameView.prototype, "game.GameView");
 })(game || (game = {}));
-//# sourceMappingURL=GameView.js.map

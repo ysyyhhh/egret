@@ -40,4 +40,3 @@ var game;
     game.EventConsts = EventConsts;
     __reflect(EventConsts.prototype, "game.EventConsts");
 })(game || (game = {}));
-//# sourceMappingURL=EventConsts.js.map

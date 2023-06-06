@@ -116,4 +116,3 @@ var game;
     game.GameRankView = GameRankView;
     __reflect(GameRankView.prototype, "game.GameRankView");
 })(game || (game = {}));
-//# sourceMappingURL=GameRankView.js.map

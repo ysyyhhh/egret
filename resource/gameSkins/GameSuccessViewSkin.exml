@@ -12,7 +12,7 @@
 		<e:Label text="最佳" size="35" fontFamily="Microsoft YaHei" textColor="0xFFCC00" bold="true" horizontalCenter="0" x="275" y="167" scaleX="1" scaleY="1" visible="false"/>
 		<e:Label text="999999" size="45" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0.5" x="227" y="219" id="bestScoreLabel" scaleX="1" scaleY="1" textColor="0xFFEC1C" visible="false"/>
 		<e:Group width="567" height="61" horizontalCenter="0" y="310" visible="false">
-			<e:Label id="chipsLabel" text="+9999999999999999" textColor="0xFFEC1C" verticalCenter="0" x="30" size="45" bold="true"/>
+			<!-- <e:Label id="chipsLabel" text="+9999999999999999" textColor="0xFFEC1C" verticalCenter="0" x="30" size="45" bold="true"/> -->
 			<e:Image x="153" source="gold" y="0"/>
 			<e:layout>
 				<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>

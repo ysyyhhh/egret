@@ -23,4 +23,3 @@ var table;
     table.TableGameConfig = TableGameConfig;
     __reflect(TableGameConfig.prototype, "table.TableGameConfig");
 })(table || (table = {}));
-//# sourceMappingURL=TableGameConfig.js.map

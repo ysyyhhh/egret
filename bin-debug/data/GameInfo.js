@@ -368,4 +368,3 @@ var game;
     game.GameInfo = GameInfo;
     __reflect(GameInfo.prototype, "game.GameInfo");
 })(game || (game = {}));
-//# sourceMappingURL=GameInfo.js.map

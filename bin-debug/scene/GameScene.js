@@ -178,4 +178,3 @@ var game;
     game.GameScene = GameScene;
     __reflect(GameScene.prototype, "game.GameScene");
 })(game || (game = {}));
-//# sourceMappingURL=GameScene.js.map

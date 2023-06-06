@@ -175,4 +175,3 @@ var game;
     game.RoundItem = RoundItem;
     __reflect(RoundItem.prototype, "game.RoundItem");
 })(game || (game = {}));
-//# sourceMappingURL=RoundItem.js.map

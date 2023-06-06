@@ -67,4 +67,3 @@ var game;
     game.InquiryEnterGameView = InquiryEnterGameView;
     __reflect(InquiryEnterGameView.prototype, "game.InquiryEnterGameView");
 })(game || (game = {}));
-//# sourceMappingURL=InquiryEnterGameView.js.map

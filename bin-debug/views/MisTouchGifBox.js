@@ -61,4 +61,3 @@ var game;
     game.MisTouchGifBox = MisTouchGifBox;
     __reflect(MisTouchGifBox.prototype, "game.MisTouchGifBox");
 })(game || (game = {}));
-//# sourceMappingURL=MisTouchGifBox.js.map
