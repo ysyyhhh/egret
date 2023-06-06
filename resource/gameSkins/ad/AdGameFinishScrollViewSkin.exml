@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="AdGameFinishScrollViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+    <e:Image source="ad-bg" right="0" left="0" top="0" bottom="0" scale9Grid="5,5,36,36" touchEnabled="false"/>
+	<e:Scroller id="adScroller" anchorOffsetY="0" width="600" height="1050" horizontalCenter="0" verticalCenter="-5">
+		<e:Group id="adGroup">
+			<e:layout>
+				<e:TileLayout orientation="rows" requestedColumnCount="2" verticalGap="20" horizontalGap="20" rowAlign="justifyUsingGap" columnAlign="justifyUsingGap"/>
+			</e:layout>
+		</e:Group>
+	</e:Scroller>
+
+    <e:Image scale9Grid="5,5,36,36" touchEnabled="false" source="ad-title-complete" horizontalCenter="0.5" top="75"/>
+
+	<ui:Button id="continueBtn" interactive="bright" label="" horizontalCenter="1" y="1162">
+		<ui:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ad-btn-next"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</ui:skinName>
+	</ui:Button>
+</e:Skin>

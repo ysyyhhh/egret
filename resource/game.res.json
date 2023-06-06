@@ -1,0 +1,305 @@
+{
+	"groups": [
+		{
+			"keys": "gameConfig_json,TableGameConfig_json,TableSceneLevelConfig_json,ui_json,finger_effect_json,finger_effect_png,knead_effect_json,knead_effect_png,track_effect_1_png,track_effect_2_png,track_effect_3_png,track_effect_4_png,tracks_json,chips_font_fnt,chips_font_png,combonumber_fnt,combonumber_png,level_font_fnt,level_font_png,number_font_fnt,number_font_png,reward_font_fnt,reward_font_png,roundnumber_blue_fnt,roundnumber_blue_png,roundnumber_green_fnt,roundnumber_green_png,roundnumber_orange_fnt,roundnumber_orange_png,roundnumber_red_fnt,roundnumber_red_png,light_png,bg_jiesuan_png,TableBackgroundConfig_json,TableSkinConfig_json,explode_effect_1_png,explode_effect_2_png,explode_effect_3_png,explode_effect_4_png,explode_effect_3_json,explode_effect_2_json,explode_effect_1_json,explode_effect_4_json",
+			"name": "game"
+		},
+		{
+			"keys": "bgm_main_mp3,bgm_start_mp3,buttonClick_mp3,combo_sound_mp3,game_fail_mp3,game_success_mp3,hit_sound_mp3,magicClick0_mp3,magicClick1_mp3,magicClick2_mp3,magicClick3_mp3,magicClick4_mp3,magicClick5_mp3,magicClick6_mp3,track_sound_mp3",
+			"name": "sound"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/gameConfig.json",
+			"type": "json",
+			"name": "gameConfig_json"
+		},
+		{
+			"url": "table/TableGameConfig.json",
+			"type": "json",
+			"name": "TableGameConfig_json"
+		},
+		{
+			"url": "table/TableSceneLevelConfig.json",
+			"type": "json",
+			"name": "TableSceneLevelConfig_json"
+		},
+		{
+			"url": "assets/effect/finger_effect.png",
+			"type": "image",
+			"name": "finger_effect_png"
+		},
+		{
+			"url": "assets/effect/knead_effect.png",
+			"type": "image",
+			"name": "knead_effect_png"
+		},
+		{
+			"url": "assets/effect/track_effect_1.png",
+			"type": "image",
+			"name": "track_effect_1_png"
+		},
+		{
+			"url": "assets/effect/track_effect_2.png",
+			"type": "image",
+			"name": "track_effect_2_png"
+		},
+		{
+			"url": "assets/effect/track_effect_3.png",
+			"type": "image",
+			"name": "track_effect_3_png"
+		},
+		{
+			"url": "assets/effect/track_effect_4.png",
+			"type": "image",
+			"name": "track_effect_4_png"
+		},
+		{
+			"url": "assets/image/light.png",
+			"type": "image",
+			"name": "light_png"
+		},
+		{
+			"url": "assets/font/chips_font.fnt",
+			"type": "font",
+			"name": "chips_font_fnt"
+		},
+		{
+			"url": "assets/font/chips_font.png",
+			"type": "image",
+			"name": "chips_font_png"
+		},
+		{
+			"url": "assets/font/combonumber.fnt",
+			"type": "font",
+			"name": "combonumber_fnt"
+		},
+		{
+			"url": "assets/font/combonumber.png",
+			"type": "image",
+			"name": "combonumber_png"
+		},
+		{
+			"url": "assets/font/level_font.fnt",
+			"type": "font",
+			"name": "level_font_fnt"
+		},
+		{
+			"url": "assets/font/level_font.png",
+			"type": "image",
+			"name": "level_font_png"
+		},
+		{
+			"url": "assets/font/number_font.fnt",
+			"type": "font",
+			"name": "number_font_fnt"
+		},
+		{
+			"url": "assets/font/number_font.png",
+			"type": "image",
+			"name": "number_font_png"
+		},
+		{
+			"url": "assets/font/reward_font.fnt",
+			"type": "font",
+			"name": "reward_font_fnt"
+		},
+		{
+			"url": "assets/font/reward_font.png",
+			"type": "image",
+			"name": "reward_font_png"
+		},
+		{
+			"url": "assets/font/roundnumber_blue.fnt",
+			"type": "font",
+			"name": "roundnumber_blue_fnt"
+		},
+		{
+			"url": "assets/font/roundnumber_blue.png",
+			"type": "image",
+			"name": "roundnumber_blue_png"
+		},
+		{
+			"url": "assets/font/roundnumber_green.fnt",
+			"type": "font",
+			"name": "roundnumber_green_fnt"
+		},
+		{
+			"url": "assets/font/roundnumber_green.png",
+			"type": "image",
+			"name": "roundnumber_green_png"
+		},
+		{
+			"url": "assets/font/roundnumber_orange.fnt",
+			"type": "font",
+			"name": "roundnumber_orange_fnt"
+		},
+		{
+			"url": "assets/font/roundnumber_orange.png",
+			"type": "image",
+			"name": "roundnumber_orange_png"
+		},
+		{
+			"url": "assets/font/roundnumber_red.fnt",
+			"type": "font",
+			"name": "roundnumber_red_fnt"
+		},
+		{
+			"url": "assets/font/roundnumber_red.png",
+			"type": "image",
+			"name": "roundnumber_red_png"
+		},
+		{
+			"url": "assets/sound/bgm_main.mp3",
+			"type": "sound",
+			"name": "bgm_main_mp3"
+		},
+		{
+			"url": "assets/sound/bgm_start.mp3",
+			"type": "sound",
+			"name": "bgm_start_mp3"
+		},
+		{
+			"url": "assets/sound/buttonClick.mp3",
+			"type": "sound",
+			"name": "buttonClick_mp3"
+		},
+		{
+			"url": "assets/sound/combo_sound.mp3",
+			"type": "sound",
+			"name": "combo_sound_mp3"
+		},
+		{
+			"url": "assets/sound/game_fail.mp3",
+			"type": "sound",
+			"name": "game_fail_mp3"
+		},
+		{
+			"url": "assets/sound/game_success.mp3",
+			"type": "sound",
+			"name": "game_success_mp3"
+		},
+		{
+			"url": "assets/sound/hit_sound.mp3",
+			"type": "sound",
+			"name": "hit_sound_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick0.mp3",
+			"type": "sound",
+			"name": "magicClick0_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick1.mp3",
+			"type": "sound",
+			"name": "magicClick1_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick2.mp3",
+			"type": "sound",
+			"name": "magicClick2_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick3.mp3",
+			"type": "sound",
+			"name": "magicClick3_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick4.mp3",
+			"type": "sound",
+			"name": "magicClick4_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick5.mp3",
+			"type": "sound",
+			"name": "magicClick5_mp3"
+		},
+		{
+			"url": "assets/sound/magicClick6.mp3",
+			"type": "sound",
+			"name": "magicClick6_mp3"
+		},
+		{
+			"url": "assets/sound/track_sound.mp3",
+			"type": "sound",
+			"name": "track_sound_mp3"
+		},
+		{
+			"url": "assets/effect/finger_effect.json",
+			"type": "json",
+			"name": "finger_effect_json"
+		},
+		{
+			"url": "assets/effect/tracks.json",
+			"type": "json",
+			"name": "tracks_json"
+		},
+		{
+			"url": "assets/effect/knead_effect.json",
+			"type": "json",
+			"name": "knead_effect_json"
+		},
+		{
+			"url": "assets/atlas/ui.json",
+			"type": "sheet",
+			"name": "ui_json",
+			"subkeys": "ad-bg,ad-box,ad-btn-continue,ad-btn-mistouch,ad-btn-next,ad-btn-return,ad-btn-supper,ad-gridbg,ad-guide-circle,ad-icon-mark,ad-item-frame,ad-itembar1,ad-itembar2,ad-itembar3,ad-itembar4,ad-itembar5,ad-itembar6,ad-mingrid,ad-side-left,ad-side-right,ad-title-complete,bg_frame,bg_top,biaoti,biaoti_beijing1,biaoti_beijing2,biaoti_caidan,biaoti_gongxihuode,biaoti_qiuqiu1,biaoti_qiuqiu2,biaoti_tiaozhanshibai,biaoti_tiaozhanshibai1,biaoti_tishi,block_1_1,block_1_2,block_1_3,block_1_4,block_2_1,block_2_2,block_2_3,block_2_4,block_3_1,block_3_2,block_3_3,block_3_4,btn_3beilingqu,btn_add,btn_bangzhu1,btn_bangzhu2,btn_chongwan,btn_chongxinkaishi,btn_close,btn_fanhui,btn_fenxiang,btn_gold,btn_home,btn_lingqu,btn_mianfeihuode,btn_mistouch,btn_muisc_close,btn_muisc_open,btn_paihangbang,btn_queding,btn_quxiao,btn_reduce,btn_shangdian,btn_shezhi,btn_shezhi1,btn_shezhi2,btn_shuangbeilignqu,btn_sound_close,btn_sound_open,btn_start,btn_xiayiguan,btn_xuanyao,bushu_text,chongwan_btn,chongwan_text,di1tian,di2tian,di3tian,di4tian,di5tian,di6tian,empty,fenshu_text,finger,gold,gou,gou_kk,icon_gou,kk2,kk4,kk5,kk_blue,kk_diqitian,kk_huobi,kk_red,kk_shangdian1,kk_shangdian2,level_text,mistouch_rect1,mistouch_rect2,mistouch_tips,paihangbang_biaoti,round_1,round_2,round_3,round_4,round_bg,round_bg_1,round_bg_2,round_bg_3,round_bg_4,round_gray,round_hight_1,round_hight_2,round_hight_3,round_hight_4,sel_block_1_1,sel_block_1_2,sel_block_1_3,sel_block_1_4,sel_block_2_1,sel_block_2_2,sel_block_2_3,sel_block_2_4,sel_block_3_1,sel_block_3_2,sel_block_3_3,sel_block_3_4,suo,text_lianji,text_shengli,word_meiriqiandao,word_meiriqiandaosongjiangli,xuanyao_btn,yinxiao_text,yinyue_text,zhuye_btn,zhuye_text"
+		},
+		{
+			"url": "assets/image/bg_jiesuan.png",
+			"type": "image",
+			"name": "bg_jiesuan_png"
+		},
+		{
+			"url": "table/TableBackgroundConfig.json",
+			"type": "json",
+			"name": "TableBackgroundConfig_json"
+		},
+		{
+			"url": "table/TableSkinConfig.json",
+			"type": "json",
+			"name": "TableSkinConfig_json"
+		},
+		{
+			"url": "assets/effect/explode_effect_1.png",
+			"type": "image",
+			"name": "explode_effect_1_png"
+		},
+		{
+			"url": "assets/effect/explode_effect_2.png",
+			"type": "image",
+			"name": "explode_effect_2_png"
+		},
+		{
+			"url": "assets/effect/explode_effect_3.png",
+			"type": "image",
+			"name": "explode_effect_3_png"
+		},
+		{
+			"url": "assets/effect/explode_effect_4.png",
+			"type": "image",
+			"name": "explode_effect_4_png"
+		},
+		{
+			"url": "assets/effect/explode_effect_3.json",
+			"type": "json",
+			"name": "explode_effect_3_json"
+		},
+		{
+			"url": "assets/effect/explode_effect_2.json",
+			"type": "json",
+			"name": "explode_effect_2_json"
+		},
+		{
+			"url": "assets/effect/explode_effect_1.json",
+			"type": "json",
+			"name": "explode_effect_1_json"
+		},
+		{
+			"url": "assets/effect/explode_effect_4.json",
+			"type": "json",
+			"name": "explode_effect_4_json"
+		}
+	]
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ChipsButtonSkin" width="204" height="82" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="btn_gold"/>
+	<e:Label id="chipsLabel" text="999" horizontalCenter="27.5" verticalCenter="0" fontFamily="Microsoft YaHei" textColor="0xFFFFFF" size="40"/>
+</e:Skin>

@@ -1,0 +1,80 @@
+{
+	"groups": [
+		{
+			"keys": "gamebg_jpg,loading_bg_png,loading_png,logo_png,tipsbg_png,bannerNativeAD_png,bannerNativeBg_png,bannerNativeBtn_png,bannerNativeClose_png,bg_png,close_png,native_insters_layerBg_png,SpotNativeAD_png,touch_png",
+			"name": "loading"
+		}
+	],
+	"resources": [
+		{
+			"url": "loading/gamebg.jpg",
+			"type": "image",
+			"name": "gamebg_jpg"
+		},
+		{
+			"url": "loading/loading.png",
+			"type": "image",
+			"name": "loading_png"
+		},
+		{
+			"url": "loading/loading_bg.png",
+			"type": "image",
+			"name": "loading_bg_png"
+		},
+		{
+			"url": "loading/logo.png",
+			"type": "image",
+			"name": "logo_png"
+		},
+		{
+			"url": "loading/tipsbg.png",
+			"type": "image",
+			"name": "tipsbg_png"
+		},
+		{
+			"url": "assets/KingSdkImage/SpotNativeAD.png",
+			"type": "image",
+			"name": "SpotNativeAD_png"
+		},
+		{
+			"url": "assets/KingSdkImage/bannerNativeAD.png",
+			"type": "image",
+			"name": "bannerNativeAD_png"
+		},
+		{
+			"url": "assets/KingSdkImage/bannerNativeBg.png",
+			"type": "image",
+			"name": "bannerNativeBg_png"
+		},
+		{
+			"url": "assets/KingSdkImage/bannerNativeBtn.png",
+			"type": "image",
+			"name": "bannerNativeBtn_png"
+		},
+		{
+			"url": "assets/KingSdkImage/bannerNativeClose.png",
+			"type": "image",
+			"name": "bannerNativeClose_png"
+		},
+		{
+			"url": "assets/KingSdkImage/bg.png",
+			"type": "image",
+			"name": "bg_png"
+		},
+		{
+			"url": "assets/KingSdkImage/close.png",
+			"type": "image",
+			"name": "close_png"
+		},
+		{
+			"url": "assets/KingSdkImage/native_insters_layerBg.png",
+			"type": "image",
+			"name": "native_insters_layerBg_png"
+		},
+		{
+			"url": "assets/KingSdkImage/touch.png",
+			"type": "image",
+			"name": "touch_png"
+		}
+	]
+}

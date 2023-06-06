@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MenuBarSkin" width="720" height="90" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+	<ui:Button id="settingBtn" interactive="bright" verticalCenter="0" left="40">
+		<ui:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_shezhi"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</ui:skinName>
+	</ui:Button>
+	<e:Group width="201" height="62" verticalCenter="1" left="158" visible="true">
+		<e:Image source="kk_huobi" visible="true" verticalCenter="0"/>
+		<e:Image verticalCenter="0" left="-7" source="gold"/>
+		<e:Group width="109" anchorOffsetX="0" anchorOffsetY="0" x="47" height="62" y="0">
+		<e:BitmapLabel id="chipsLabel" font="chips_font_fnt" text="0" verticalCenter="0" horizontalCenter="0"/>
+		</e:Group>
+	</e:Group>
+
+</e:Skin>

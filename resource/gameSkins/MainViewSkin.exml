@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+	<e:Image left="0" top="0" right="0" bottom="0" source="gamebg_jpg" visible="true"/>
+	<e:Group id="menuLayer" width="720" height="90" top="80">
+	</e:Group>
+	<e:Image source="logo_png" horizontalCenter="0.5" verticalCenter="-277" visible="true"/>
+	<ui:Button id="startBtn" interactive="bright" label="" horizontalCenter="0" verticalCenter="0">
+		<ui:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_start"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</ui:skinName>
+	</ui:Button>
+	<e:Group height="140" verticalCenter="240" width="500" horizontalCenter="0">
+		<ui:Button id="shopBtn" interactive="bright" label="" visible="true">
+			<ui:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shangdian"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</ui:skinName>
+		</ui:Button>
+		<ui:Button id="shareBtn" interactive="bright" label="">
+			<ui:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_fenxiang"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</ui:skinName>
+		</ui:Button>
+		<ui:Button id="rankBtn" interactive="bright" label="">
+			<ui:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_paihangbang"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</ui:skinName>
+		</ui:Button>
+		<e:layout>
+			<e:HorizontalLayout horizontalAlign="center" gap="20"/>
+		</e:layout>
+	</e:Group>
+
+    <e:Group id="adScrollGroup" touchEnabled="false" anchorOffsetX="0" anchorOffsetY="0" bottom="0" left="0" right="0" height="190" visible="true" locked="true">
+		<e:Rect left="0" right="0" top="0" bottom="0" fillAlpha="1" touchChildren="false" touchEnabled="false" fillColor="0xffffff" visible="false"/>
+		<ui:AdScrollView id="adScrollView" scaleX="1" scaleY="1" touchEnabled="false" left="5" right="5" bottom="5" top="5" skinName="AdHorizontalScrollViewSkin"/>
+	</e:Group>
+
+	<e:Group id="adScrollGroupEx" touchEnabled="false" anchorOffsetX="0" anchorOffsetY="0" bottom="0" left="0" right="0" height="345" visible="true" locked="true">
+		<e:Rect left="0" right="0" top="0" bottom="0" fillAlpha="1" touchChildren="false" touchEnabled="false" fillColor="0xffffff" visible="false"/>
+		<ui:AdScrollView id="adScrollViewEx" scaleX="1" scaleY="1" touchEnabled="false" left="5" right="5" bottom="5" top="5" skinName="AdHorizontalScrollViewExSkin"/>
+	</e:Group>
+</e:Skin>

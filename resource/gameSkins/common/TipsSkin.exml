@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TipsSkin" width="720" height="40" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group left="0" right="0" top="0" bottom="0">
+		<e:Image source="tipsbg_png" left="0" right="0" top="0" bottom="0"/>
+		<e:Label id="msgLabel" text="显示在屏幕中央，没有操作，显示3秒后移除" left="0" right="0" top="0" bottom="0" verticalAlign="middle" textAlign="center" fontFamily="Microsoft YaHei" size="24" textColor="0xf0f0f0"/>
+	</e:Group>
+</e:Skin>

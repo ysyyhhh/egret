@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" xmlns:game="game.*" states="up,down,disabled">
+    <e:Image left="0" right="0" top="0" bottom="0" visible="true" source="gamebg_jpg" locked="true"/>
+	<e:Group width="680" height="680" horizontalCenter="0" touchEnabled="false" visible="true" verticalCenter="111">
+		<e:Image source="bg_frame" left="0" right="0" top="0" bottom="0" touchEnabled="false" scale9Grid="40,40,3,5"/>
+		<e:Group id="contentLayer" touchChildren="false" touchEnabled="true" left="16" right="16" top="16" bottom="16">
+			<e:Group id="shapeLayer" scaleX="1" scaleY="1" left="0" right="0" top="0" bottom="0"/>
+		</e:Group>
+	</e:Group>
+	<e:Group id="bottomLayer" left="0" right="0" height="166" visible="true" top="122">
+		<e:Image source="bg_top" left="0" right="0" top="0" scale9Grid="40,36,3,4" height="212" visible="false"/>
+		<e:Group width="130" top="10" bottom="0" left="15">
+		<ui:Button id="reduceBtn" interactive="bright" horizontalCenter="0" verticalCenter="18" anchorOffsetX="45" anchorOffsetY="45">
+			<ui:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_reduce"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</ui:skinName>
+		</ui:Button>
+		<e:Image source="gold" scaleX="0.5" scaleY="0.5" horizontalCenter="-32" verticalCenter="-48.5"/>
+		<e:Label id="reduceLabel" text="300" horizontalCenter="15.5" verticalCenter="-48"/>
+		</e:Group>
+		<e:Group width="130" top="10" bottom="0" left="146">
+		<ui:Button id="addBtn" interactive="bright" horizontalCenter="0" verticalCenter="18" anchorOffsetX="45" anchorOffsetY="45">
+			<ui:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_add"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</ui:skinName>
+		</ui:Button>
+		<e:Image source="gold" scaleX="0.5" scaleY="0.5" horizontalCenter="-32" verticalCenter="-48.5"/>
+		<e:Label id="addLabel" text="300" horizontalCenter="15.5" verticalCenter="-48"/>
+		</e:Group>
+		<e:Group width="171" height="62" verticalCenter="0" visible="true" right="36">
+		<e:Image source="kk_huobi" visible="true" verticalCenter="0"/>
+		<e:Image verticalCenter="0" left="-7" source="gold"/>
+		<e:Group width="109" anchorOffsetX="0" anchorOffsetY="0" x="47" height="62" y="0">
+			<e:BitmapLabel id="chipsLabel" font="chips_font_fnt" text="0" verticalCenter="0" horizontalCenter="0"/>
+		</e:Group>
+		</e:Group>
+		<e:Group height="111" anchorOffsetY="0" left="287" right="221" verticalCenter="0">
+		<e:Group width="110" height="30" x="25" y="27">
+			<e:Image source="level_text" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+		</e:Group>
+		<e:Group width="80" height="30">
+			<e:BitmapLabel id="levelLabel" font="level_font_fnt" text="100" y="0" left="5"/>
+		</e:Group>
+		<e:layout>
+			<e:HorizontalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</e:layout>
+		</e:Group>
+	</e:Group>
+	<e:Group id="roundLayer" height="116" left="0" right="0" anchorOffsetY="0" visible="true" verticalCenter="-310">
+		<game:RoundItem id="roundItem1" skinName="RoundItemSkin" horizontalCenter="-225" verticalCenter="0"/>
+		<game:RoundItem skinName="RoundItemSkin" id="roundItem2" horizontalCenter="-75" verticalCenter="0" locked="true"/>
+		<game:RoundItem skinName="RoundItemSkin" id="roundItem3" horizontalCenter="75" verticalCenter="0" locked="true"/>
+		<game:RoundItem skinName="RoundItemSkin" id="roundItem4" horizontalCenter="225" verticalCenter="0" locked="true"/>
+		<e:Group id="twinkleLayer" top="-5" bottom="-5" left="50" right="50" visible="true">
+			<e:Rect width="4" left="0" top="0" bottom="0" fillColor="0xFF0000"/>
+			<e:Rect width="4" top="0" bottom="0" fillColor="0xFF0000" y="10" right="0"/>
+			<e:Rect fillColor="0xFF0000" right="0" height="4" left="0" top="0"/>
+			<e:Rect fillColor="0xFF0000" right="0" height="4" left="0" x="10" bottom="0"/>
+		</e:Group>
+	</e:Group>
+    <e:Group id="menuLayer" height="120" top="20" left="0" right="0" visible="true">
+			<e:Image source="bg_top" left="0" right="0" bottom="0" top="-100" scale9Grid="41,45,3,3"/>
+			<e:Group height="90" left="0" right="0" x="0" scaleX="1" scaleY="1" verticalCenter="0">
+				<e:Group width="200" top="0" bottom="0" horizontalCenter="-114">
+				<e:Image source="bushu_text" top="7" horizontalCenter="0"/>
+				<e:Group width="164" height="43" verticalCenter="20" horizontalCenter="0">
+					<e:Image source="kk_huobi" x="0" y="0" scaleX="1" scaleY="1"/>
+					<e:Label id="stepLabel" text="99" textColor="0x5660B9" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0" verticalCenter="0"/>
+				</e:Group>
+				</e:Group>
+				<e:Group width="200" top="0" bottom="0" y="10" horizontalCenter="82">
+				<e:Image top="7" horizontalCenter="0" source="fenshu_text"/>
+				<e:Group width="164" height="43" verticalCenter="20" horizontalCenter="0">
+					<e:Image source="kk_huobi" x="0" y="0" scaleX="1" scaleY="1"/>
+					<e:Label text="99" id="scoreLabel" textColor="0x5660B9" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0" verticalCenter="0"/>
+				</e:Group>
+				</e:Group>
+				<ui:Button id="settingBtn" interactive="bright" verticalCenter="0" left="35">
+					<ui:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="btn_shezhi"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+						</e:Skin>
+					</ui:skinName>
+				</ui:Button>
+			</e:Group>
+		</e:Group>
+	<e:Group height="106" left="0" right="0" anchorOffsetY="0" verticalCenter="-424" visible="false">
+		<e:Label id="guideTipsLabel" text="连接3个或更多相同色块可消除并获得分数" horizontalCenter="0" bold="true" size="35" x="195" textColor="0xF1004B" visible="true" verticalCenter="-33"/>
+		<e:Image id="comboImage" source="text_lianji" horizontalCenter="0.5" verticalCenter="-8.5" visible="true"/>
+		<e:BitmapLabel id="comboScoreLabel" font="combonumber_fnt" text="80" horizontalCenter="0" verticalCenter="38.5"/>
+		<e:BitmapLabel id="comboCountLabel" font="combonumber_fnt" text="2" horizontalCenter="71.5" verticalCenter="-7.5"/>
+		<e:Label id="reduceTipsLabel" text="任意选择一个色块消除" horizontalCenter="0" verticalCenter="0" bold="true" size="35" textColor="0xE70113"/>
+	</e:Group>
+	<e:Group id="maskGroup" left="0" right="0" top="0" bottom="0" visible="false">
+		<e:Rect id="maskRectTop" fillAlpha="0.5" left="0" top="0" right="0" height="148" touchChildren="false" touchEnabled="false"/>
+		<e:Rect id="maskRectBottom" fillAlpha="0.5" left="0" right="0" visible="true" bottom="0" top="408" touchChildren="false" touchEnabled="false"/>
+		<e:Label text="点击任意处继续" horizontalCenter="0" verticalCenter="100" size="40" bold="true" fontFamily="Microsoft YaHei" touchEnabled="false"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameRankViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+	<e:Group id="closeLayer" left="0" right="0" top="0" bottom="0">
+		<e:Group width="680" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" horizontalCenter="0" x="365" top="300" bottom="250">
+		<e:Image left="0" bottom="0" top="0" right="0" visible="true" scale9Grid="35,33,4,6" source="kk_blue"/>
+		<e:Image horizontalCenter="0.5" top="-86" visible="true" source="paihangbang_biaoti"/>
+			<e:Image visible="true" left="50" right="50" top="50" bottom="120" source="kk5" scale9Grid="25,25,24,24"/>
+			<ui:Button id="shareBtn" interactive="bright" label="" scaleX="1" scaleY="1" bottom="22" right="144">
+				<ui:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="xuanyao_btn"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</ui:skinName>
+			</ui:Button>
+		</e:Group>
+
+        <ui:Button id="closeBtn" interactive="bright" label="" left="35" top="64">
+					<ui:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="btn_fanhui"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+						</e:Skin>
+					</ui:skinName>
+		</ui:Button>
+        
+	</e:Group>
+	<e:Group id="dataLayer" width="580" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1" horizontalCenter="0" top="348" bottom="365">
+	</e:Group>
+</e:Skin>

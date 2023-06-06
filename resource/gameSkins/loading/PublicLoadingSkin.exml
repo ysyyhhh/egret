@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PublicLoadingSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="ui.*" xmlns:tween="egret.tween.*">
+	<e:Image left="0" top="0" bottom="0" right="0" source="gamebg_jpg"/>
+	<e:Image source="logo_png" horizontalCenter="0" verticalCenter="-295" visible="true"/>
+	<e:Group id="progressBarGroup" height="39" anchorOffsetX="0" anchorOffsetY="0" width="591" horizontalCenter="0" verticalCenter="180">
+		<e:Image source="loading_bg_png" horizontalCenter="0" verticalCenter="0" visible="true"/>
+		<e:Image id="thumb" source="loading_png" right="0" left="0" top="0" bottom="0" visible="true"/>
+		<e:Label id="labelDisplay" size="25" text="1/100" bold="true" width="140" horizontalCenter="0" verticalCenter="0" textAlign="center" verticalAlign="middle" textColor="0x000000"/>
+		<e:Rect id="maskRect" width="20" x="0" top="0" bottom="0" visible="true"/>
+		<e:Label id="descLabel" textColor="0xf0f0f0" fontFamily="Microsoft YaHei" left="0" right="0" x="-54" y="67" scaleX="1" scaleY="1" anchorOffsetY="0" height="46" verticalAlign="middle" textAlign="center" size="28"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,8 @@
+{
+	"login_url": "http://192.168.43.252:7000",
+	"gameid":1001,
+	"zoneid":302,
+	"platid":0,
+	"debug_level":5,
+	"publish": false
+}

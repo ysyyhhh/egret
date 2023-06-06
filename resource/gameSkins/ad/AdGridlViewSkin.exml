@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="AdGridlViewSkin" width="552" height="412" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+	<e:Scroller id="adScroller" left="0" right="0" top="0" bottom="0">
+		<e:Group id="adGroup">
+			<e:layout>
+				<e:TileLayout orientation="rows" rowAlign="justifyUsingGap" columnAlign="justifyUsingGap" requestedColumnCount="3" verticalGap="6" horizontalGap="6"/>
+			</e:layout>
+		</e:Group>
+	</e:Scroller>
+</e:Skin>

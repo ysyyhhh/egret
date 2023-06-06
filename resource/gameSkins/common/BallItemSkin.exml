@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="BallItemSkin"
+	 width="88"
+	height="88" xmlns:e="http://ns.egret.com/eui">
+	<e:Image id="blockImage" source="block_1_1" scale9Grid="29,29,29,30" left="0" right="0" top="0" bottom="0"/>
+	<e:BitmapLabel id="valueLabel" font="number_font_fnt" text="1000" horizontalCenter="0" verticalCenter="0" scaleX="0.75" scaleY="0.75"/>
+</e:Skin>

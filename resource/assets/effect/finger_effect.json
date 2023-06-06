@@ -1,0 +1,46 @@
+{"mc":{
+	"finger":{
+		"frameRate":24,
+		"labels":[
+			{"name":"finger","frame":1,"end":5}
+			
+			],
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"shouzhidonghua0001",
+			"x":5,
+			"y":0
+			},
+			{
+			"res":"shouzhidonghua0002",
+			"x":2,
+			"y":2
+			},
+			{
+			"res":"shouzhidonghua0003",
+			"x":0,
+			"y":5
+			},
+			{
+			"res":"shouzhidonghua0004",
+			"x":2,
+			"y":2
+			},
+			{
+			"res":"shouzhidonghua0005",
+			"x":5,
+			"y":0
+			}
+			]
+}},
+	"res":{
+		"shouzhidonghua0001":{"x":1,"y":1,"w":106,"h":103},
+		"shouzhidonghua0003":{"x":109,"y":103,"w":99,"h":97},
+		"shouzhidonghua0005":{"x":1,"y":1,"w":106,"h":103},
+		"shouzhidonghua0004":{"x":109,"y":1,"w":103,"h":100},
+		"shouzhidonghua0002":{"x":109,"y":1,"w":103,"h":100}
+	}}

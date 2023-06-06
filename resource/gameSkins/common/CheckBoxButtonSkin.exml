@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="CheckBoxButtonSkin" width="60" height="60" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image horizontalCenter="0" verticalCenter="0" source="gou_kk"/>
+	<e:Image id="checkImage" horizontalCenter="0" verticalCenter="0" source="gou"/>
+</e:Skin>

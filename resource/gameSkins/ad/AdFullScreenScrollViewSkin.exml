@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="AdFullScreenScrollViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+	<e:Image source="ad-bg" right="0" left="0" top="0" bottom="0" scale9Grid="5,5,36,36" touchEnabled="false"/>
+	<e:Group id="timerLayer_del" width="284" height="80" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="14" bottom="25" touchChildren="false" touchEnabled="false" visible="false">
+		<e:Group width="50" height="80" x="50" y="12">
+			<e:Label id="timeLabel" text="3" fontFamily="Microsoft YaHei" bold="true" size="40" height="40" verticalCenter="-2" right="0" textColor="0xf20c0c"/>
+		</e:Group>
+		<e:Group width="210" height="80" x="60" y="22" anchorOffsetX="0">
+			<e:Label text="秒后可关闭" fontFamily="Microsoft YaHei" size="35" textColor="0x000000" height="40" verticalCenter="0"/>
+		</e:Group>
+		<e:layout>
+			<e:HorizontalLayout/>
+		</e:layout>
+	</e:Group>
+	<e:Scroller id="adScroller" bottom="0" top="0" left="20" right="20" anchorOffsetY="0">
+		<e:Group id="adGroup">
+			<e:layout>
+				<e:TileLayout orientation="rows" verticalGap="20" horizontalGap="20" rowAlign="top" columnAlign="justifyUsingGap" requestedColumnCount="2"/>
+			</e:layout>
+		</e:Group>
+	</e:Scroller>
+
+	<ui:Button id="continueBtn" interactive="bright" label="" horizontalCenter="0.5" y="1162">
+		<ui:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ad-btn-continue"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</ui:skinName>
+	</ui:Button>
+	<ui:Button id="returnBtn_del" interactive="bright" label="" left="10" top="10" visible="false">
+		<ui:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ad-btn-return"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</ui:skinName>
+
+	</ui:Button>
+</e:Skin>

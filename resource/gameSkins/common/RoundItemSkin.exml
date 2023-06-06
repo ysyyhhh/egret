@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="RoundItemSkin"
+	 width="116"
+	height="116" xmlns:e="http://ns.egret.com/eui">
+	<e:Image id="bgImage" source="round_bg" left="0" right="0" top="0" bottom="0" visible="true"/>
+	<e:Image id="grayImage" horizontalCenter="0" verticalCenter="0" x="16" y="16" visible="true" source="round_bg_1"/>
+	<e:Group id="renderGroup" width="105" height="105" horizontalCenter="0" verticalCenter="0" visible="true">
+		<e:Image id="roundImage" source="round_1" visible="true" x="0" y="0" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:BitmapLabel id="valueLabel" text="5000" horizontalCenter="0" verticalCenter="0" scaleX="1" scaleY="1" visible="true" font="roundnumber_red_fnt"/>
+</e:Skin>

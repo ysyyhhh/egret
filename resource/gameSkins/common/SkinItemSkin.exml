@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SkinItemSkin" width="160" height="160" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="bgImage" scale9Grid="30,27,10,17" left="0" right="0" top="0" bottom="0" source="kk_shangdian2"/>
+	<e:Image id="blockImage" verticalCenter="0" horizontalCenter="0" fillMode="scale" source="block_3_1" width="88" height="88"/>
+	<e:Image id="selecteImage" source="gou" top="0" right="0"/>
+	<e:Image scale9Grid="30,27,10,17" left="0" right="0" top="0" bottom="0" id="maskImage" x="10" y="10" source="kk_shangdian1"/>
+	<e:Image id="lockImage" source="suo" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

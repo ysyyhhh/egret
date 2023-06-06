@@ -1,0 +1,52 @@
+{
+  "engineVersion": "5.4.0",
+  "compilerVersion": "5.4.0",
+  "template": {},
+  "target": {
+    "current": "web"
+  },
+  "modules": [
+    {
+      "name": "egret"
+    },
+    {
+      "name": "eui"
+    },
+    {
+      "name": "assetsmanager"
+    },
+    {
+      "name": "game"
+    },
+    {
+      "name": "tween"
+    },
+    {
+      "name": "promise"
+    },
+    {
+      "name": "king_sdkManager",
+      "path": "libs/king_sdk"
+    },
+    {
+      "name": "uniLib",
+      "path": "../../libsrc/uniLib"
+    },
+    {
+      "name": "particle",
+      "path": "../../libsrc/egret-game-library/particle/libsrc"
+    },
+    {
+      "name": "physics",
+      "path": "../../libsrc/egret-game-library/physics/libsrc"
+    }
+  ],
+  "eui": {
+    "exmlRoot": [
+      "resource/gameSkins"
+    ]
+  },
+  "vivo": {
+    "usePlugin": false
+  }
+}
