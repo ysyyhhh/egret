@@ -1160,7 +1160,7 @@ var game;
             const alertBox = document.createElement('div');
             alertBox.innerHTML = message;
  
-            alertBox.style.backgroundImage = "url('/resource/assets/image/light.png')";
+            alertBox.style.backgroundImage = "url('https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/resource/assets/image/light.png')";
             alertBox.style.backgroundSize = "cover"; 
             alertBox.style.backgroundPosition = "center center";
             alertBox.style.backgroundRepeat = "no-repeat";
