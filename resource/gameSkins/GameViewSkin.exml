@@ -113,6 +113,6 @@
 	<e:Group id="maskGroup" left="0" right="0" top="0" bottom="0" visible="false">
 		<e:Rect id="maskRectTop" fillAlpha="0.5" left="0" top="0" right="0" height="148" touchChildren="false" touchEnabled="false"/>
 		<e:Rect id="maskRectBottom" fillAlpha="0.5" left="0" right="0" visible="true" bottom="0" top="408" touchChildren="false" touchEnabled="false"/>
-		<e:Label text="点击任意处继续" horizontalCenter="0" verticalCenter="100" size="40" bold="true" fontFamily="Microsoft YaHei" touchEnabled="false"/>
+		<e:Label text="Click anywhere to continue" horizontalCenter="0" verticalCenter="100" size="40" bold="true" fontFamily="Microsoft YaHei" touchEnabled="false"/>
 	</e:Group>
 </e:Skin>

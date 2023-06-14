@@ -110,10 +110,11 @@
                 // script.onerror = reject;
                 // document.head.appendChild(script);
                 var s = document.createElement('script');
-                console.log(src)
+                
                 s.async = true;
-                // s.src = src + "?v=" + Math.random();
-                s.src = src
+                s.src = src 
+                // s.src = src.replace("https://cdn.jsdelivr.net/gh/ysyyhhh/egret@release/","")
+                console.log(s.src)
                 s.onload = resolve;
                 s.onerror = reject;
                 document.body.appendChild(s);

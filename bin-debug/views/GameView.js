@@ -1090,7 +1090,10 @@ var game;
             }
             return score
         }
-        GameView.prototype.findBotPathDFS = function (row, col, newBalls,maxBalls,vis) {
+        GameView.prototype.findBotPathDFS = function (row, col, newBalls, maxBalls, vis,start_timestamp) {
+            if (new Date().getTime() - start_timestamp > 700) 
+                return
+
             var x = row;
             var y = col;
             // console.log(row,col)
@@ -1109,7 +1112,7 @@ var game;
                 if (newBall.colorValue != ball.colorValue) continue;
                 vis[nx][ny] = true 
                 f = true
-                this.findBotPathDFS(nx, ny, newBalls, maxBalls, vis)
+                this.findBotPathDFS(nx, ny, newBalls, maxBalls, vis,start_timestamp)
                 newBalls.pop()
                 vis[nx][ny] = false
             }
@@ -1125,6 +1128,13 @@ var game;
                 return 
             }
         }
+        function timeLimit(fn, time) {
+            let timer = null;
+            return new Promise((resolve, reject) => {
+              timer = setTimeout(() => reject(new Error('Timed out!')), time);
+              fn()
+            }).finally(() => clearTimeout(timer)); 
+          }
         GameView.prototype.autoFindBotPaths = function () {
             maxBalls = []
             maxScore = 0
@@ -1139,16 +1149,74 @@ var game;
                         }
                     }
                     vis[row][col] = true
-                    this.findBotPathDFS(row, col, newBalls,maxBalls,vis);
+                    this.findBotPathDFS(row, col, newBalls,maxBalls,vis,new Date().getTime())
+                    // this.findBotPathDFS(row, col, newBalls,maxBalls,vis);
                 }
             }
             console.log(maxBalls)
             console.log(this.calScores(maxBalls))
             return maxBalls;
         }
+        function showAlert(message) {
+            const alertBox = document.createElement('div');
+            alertBox.innerHTML = message;
+ 
+            alertBox.style.backgroundImage = "url('/resource/assets/image/light.png')";
+            alertBox.style.backgroundSize = "cover"; 
+            alertBox.style.backgroundPosition = "center center";
+            alertBox.style.backgroundRepeat = "no-repeat";
+            alertBox.style.overflow = "hidden";
+
+            alertBox.style.position = 'fixed';
+            // alertBox.style.height = '200px';
+            alertBox.style.top = '50%';
+            alertBox.style.left = '50%';
+            alertBox.style.transform = 'translate(-50%, -50%) scale(0)';
+            alertBox.style.padding = '15px 30px';
+            // alertBox.style.width = "auto";
+            alertBox.style.height = "auto";
+            
+            alertBox.style.opacity = '0.8';
+
+            alertBox.style.border = "none"
+            // alertBox.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.2)';
+            // alertBox.style.borderRadius = '20px';
+
+            alertBox.style.fontFamily = 'Courier'; 
+            alertBox.style.fontSize = "20px";
+            alertBox.style.color = 'white';
+            
+            // alertBox.style.whiteSpace = "nowrap"; 
+
+            alertBox.style.fontWeight = 'bold';
+            
+
+            document.body.appendChild(alertBox);
+            
+            // 添加动画效果
+            alertBox.animate([
+              { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
+              { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+              { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+              { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 }
+            ], {
+              duration: 1000,
+              easing: 'ease-in-out',
+              delay: 0
+            });
+            
+            // 设置定时器以便在动画结束后删除提示框
+            setTimeout(() => {
+              alertBox.remove();
+            }, 2000);
+          }
+        // showAlert("is Fiona turn1")
         GameView.prototype.botPlay = async function() {
             if (this.isBot == false) return 
             console.log("botPlay")
+            showAlert("It's my turn！")
+            // wait 1s
+
             // return 
             // var balls = this.autoFindPaths();
             var balls = this.autoFindBotPaths();
@@ -1156,6 +1224,11 @@ var game;
                 this.isBot = false
                 return
             }
+            await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve()
+                }, 1000)
+            })
             console.log(balls)
             this.guideLineShape = new egret.Shape();
             this.shapeLayer.addChild(this.guideLineShape);
