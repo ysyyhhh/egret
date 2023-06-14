@@ -1209,7 +1209,6 @@ var game;
               alertBox.remove();
             }, 2000);
           }
-        // showAlert("is Fiona turn1")
         GameView.prototype.botPlay = async function() {
             if (this.isBot == false) return 
             console.log("botPlay")
