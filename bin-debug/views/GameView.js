@@ -1150,7 +1150,6 @@ var game;
                     }
                     vis[row][col] = true
                     this.findBotPathDFS(row, col, newBalls,maxBalls,vis,new Date().getTime())
-                    // this.findBotPathDFS(row, col, newBalls,maxBalls,vis);
                 }
             }
             console.log(maxBalls)
