@@ -45,7 +45,7 @@ var game;
             // uniLib.SoundMgr.instance.playSound("game_success_mp3");
             if (uniLib.Global.isVivogame)
                 this.shareBtn.visible = false;
-            this.levelLabel.text = "关卡" + this.sceneLevel.toString();
+            this.levelLabel.text = "Level " + this.sceneLevel.toString();
             this.scoreLabel.text = this.curScore.toString();
             this.bestScoreLabel.text = this.bestScore.toString();
             // this.chipsLabel.text = "+" + this.winChips.toString();
@@ -55,7 +55,7 @@ var game;
         //-----------------------------------------------------------------------------
         GameFailView.prototype.destroy = function () {
             uniLib.AdPlat.instance.hideBanner();
-            egret.Tween.removeTweens(this.doubleReceiveBtn);
+            // egret.Tween.removeTweens(this.doubleReceiveBtn);
             _super.prototype.destroy.call(this);
         };
         //-----------------------------------------------------------------------------

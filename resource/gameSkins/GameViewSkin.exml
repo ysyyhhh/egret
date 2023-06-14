@@ -64,14 +64,14 @@
 			<e:Image source="bg_top" left="0" right="0" bottom="0" top="-100" scale9Grid="41,45,3,3"/>
 			<e:Group height="90" left="0" right="0" x="0" scaleX="1" scaleY="1" verticalCenter="0">
 				<e:Group width="200" top="0" bottom="0" horizontalCenter="-114">
-				<e:Image source="bushu_text" top="7" horizontalCenter="0"/>
+				<e:Image source="text_step_png" width="80" height="43" top="0" horizontalCenter="0"/>
 				<e:Group width="164" height="43" verticalCenter="20" horizontalCenter="0">
 					<e:Image source="kk_huobi" x="0" y="0" scaleX="1" scaleY="1"/>
 					<e:Label id="stepLabel" text="99" textColor="0x5660B9" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0" verticalCenter="0"/>
 				</e:Group>
 				</e:Group>
 				<e:Group width="200" top="0" bottom="0" y="10" horizontalCenter="82">
-					<e:Image top="7" horizontalCenter="0" source="fenshu_text"/>
+					<e:Image source="text_score_png" top="5" width="100" height="35" horizontalCenter="0" />
 					<e:Group width="164" height="43" verticalCenter="20" horizontalCenter="0">
 						<e:Image source="kk_huobi" x="0" y="0" scaleX="1" scaleY="1"/>
 						<e:Label text="99" id="scoreLabel" textColor="0x5660B9" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0" verticalCenter="0"/>
@@ -104,11 +104,11 @@
 			</e:Group>
 		</e:Group>
 	<e:Group height="106" left="0" right="0" anchorOffsetY="0" verticalCenter="-424" visible="false">
-		<e:Label id="guideTipsLabel" text="连接3个或更多相同色块可消除并获得分数" horizontalCenter="0" bold="true" size="35" x="195" textColor="0xF1004B" visible="true" verticalCenter="-33"/>
+		<e:Label id="guideTipsLabel" text="Connect 3 or more blocks of the same color to eliminate and get points" horizontalCenter="0" bold="true" size="35" x="195" textColor="0xF1004B" visible="true" verticalCenter="-33"/>
 		<e:Image id="comboImage" source="text_lianji" horizontalCenter="0.5" verticalCenter="-8.5" visible="true"/>
 		<e:BitmapLabel id="comboScoreLabel" font="combonumber_fnt" text="80" horizontalCenter="0" verticalCenter="38.5"/>
 		<e:BitmapLabel id="comboCountLabel" font="combonumber_fnt" text="2" horizontalCenter="71.5" verticalCenter="-7.5"/>
-		<e:Label id="reduceTipsLabel" text="任意选择一个色块消除" horizontalCenter="0" verticalCenter="0" bold="true" size="35" textColor="0xE70113"/>
+		<e:Label id="reduceTipsLabel" text="Randomly choose a color block to eliminate" horizontalCenter="0" verticalCenter="0" bold="true" size="35" textColor="0xE70113"/>
 	</e:Group>
 	<e:Group id="maskGroup" left="0" right="0" top="0" bottom="0" visible="false">
 		<e:Rect id="maskRectTop" fillAlpha="0.5" left="0" top="0" right="0" height="148" touchChildren="false" touchEnabled="false"/>

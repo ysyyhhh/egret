@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="PublicLoadingSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="ui.*" xmlns:tween="egret.tween.*">
 	<e:Image left="0" top="0" bottom="0" right="0" source="gamebg_jpg"/>
-	<e:Image source="logo_png" horizontalCenter="0" verticalCenter="-295" visible="true"/>
+	<!-- <e:Image source="logo_png" horizontalCenter="0" verticalCenter="-295" visible="true"/> -->
 	<e:Group id="progressBarGroup" height="39" anchorOffsetX="0" anchorOffsetY="0" width="591" horizontalCenter="0" verticalCenter="180">
 		<e:Image source="loading_bg_png" horizontalCenter="0" verticalCenter="0" visible="true"/>
 		<e:Image id="thumb" source="loading_png" right="0" left="0" top="0" bottom="0" visible="true"/>

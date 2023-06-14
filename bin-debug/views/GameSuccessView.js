@@ -18,10 +18,10 @@ var game;
             _this.adaptationWidth();
             _this.adaptationHeight();
             uniLib.AdPlat.instance.showBanner();
-            if (uniLib.Global.isVivogame)
-                window.platform.showBannerAdvertisement();
-            if (uniLib.Global.isVivogame)
-                window.platform.showNativeAdvertisement();
+            // if (uniLib.Global.isVivogame)
+            //     window.platform.showBannerAdvertisement();
+            // if (uniLib.Global.isVivogame)
+            //     window.platform.showNativeAdvertisement();
             _this.init();
             return _this;
         }
@@ -33,11 +33,11 @@ var game;
         };
         //-----------------------------------------------------------------------------
         GameSuccessView.prototype.init = function () {
-            this.levelLabel.text = "关卡" + game.GameInfo.instance.sceneLevel.toString();
+            this.levelLabel.text = "Level " + game.GameInfo.instance.sceneLevel.toString();
             this.scoreLabel.text = game.GameInfo.instance.curScore.toString();
             this.bestScoreLabel.text = game.GameInfo.instance.maxScore.toString();
-            if (uniLib.Global.isWxgame)
-                this.autoCloseTimeout = egret.setTimeout(this.autoEnterNextSceneLevel, this, 2000);
+            // if (uniLib.Global.isWxgame)
+            //     this.autoCloseTimeout = egret.setTimeout(this.autoEnterNextSceneLevel, this, 2000);
         };
         //-----------------------------------------------------------------------------
         GameSuccessView.prototype.destroy = function () {

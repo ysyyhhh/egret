@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SiginItemSkin" width="188" height="200" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image horizontalCenter="0" verticalCenter="0" visible="true" source="kk2" scale9Grid="62,66,63,67"/>
+	<e:Image id="dayImage" y="19" horizontalCenter="0" source="di1tian"/>
+	<e:Image id="icon" verticalCenter="0" horizontalCenter="0" visible="true" source="gold"/>
+	<e:BitmapLabel id="valueLabel" text="x100" y="156" horizontalCenter="0" font="reward_font_fnt"/>
+	<e:Rect id="markRect" fillAlpha="0.4" left="0" top="0" right="0" bottom="0" ellipseHeight="50" ellipseWidth="50"/>
+	<e:Image id="finished" horizontalCenter="0" verticalCenter="0" visible="true" source="icon_gou"/>
+</e:Skin>

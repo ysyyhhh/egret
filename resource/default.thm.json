@@ -2,12 +2,28 @@
 	"skins": {},
 	"autoGenerateExmlsList": true,
 	"exmls": [
+		"resource/gameSkins/common/BackgroundItemSkin.exml",
+		"resource/gameSkins/common/BallItemSkin.exml",
+		"resource/gameSkins/common/CheckBoxButtonSkin.exml",
+		"resource/gameSkins/common/ChipsButtonSkin.exml",
+		"resource/gameSkins/common/ConfirmPanelSkin.exml",
+		"resource/gameSkins/common/MenuBarSkin.exml",
+		"resource/gameSkins/common/RoundItemSkin.exml",
+		"resource/gameSkins/common/SkinItemSkin.exml",
+		"resource/gameSkins/common/TipsSkin.exml",
 		"resource/gameSkins/GameFailViewSkin.exml",
+		"resource/gameSkins/GameRankViewSkin.exml",
+		"resource/gameSkins/GameSkinViewSkin.exml",
 		"resource/gameSkins/GameSuccessViewSkin.exml",
 		"resource/gameSkins/GameViewSkin.exml",
 		"resource/gameSkins/InquiryEnterGameSkin.exml",
 		"resource/gameSkins/loading/PublicLoadingSkin.exml",
-		"resource/gameSkins/MainViewSkin.exml"
+		"resource/gameSkins/MainViewSkin.exml",
+		"resource/gameSkins/MisTouchGifBoxSkin.exml",
+		"resource/gameSkins/RewardViewSkin.exml",
+		"resource/gameSkins/SettingViewSkin.exml",
+		"resource/gameSkins/SiginItemSkin.exml",
+		"resource/gameSkins/SiginViewSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }

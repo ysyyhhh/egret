@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="HotGameIconSkin" width="158" height="208" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="ad-btn-supper" touchEnabled="false"/>
+	<e:Group id="animGroup" width="2" height="2" right="66" bottom="26" touchChildren="false" touchEnabled="false"/>
+
+</e:Skin>

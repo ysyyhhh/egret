@@ -192,18 +192,18 @@ var Main = (function (_super) {
         });
     };
     Main.prototype.loadResConfig = function () {
-        uniLib.UIMgr.instance.showProcessBar(null, 1, 100, "准备资源配置...", "", true);
+        uniLib.UIMgr.instance.showProcessBar(null, 1, 100, "Preparing for resource configuration...", "", true);
         uniLib.ResLoadMgr.instance.loadConfig("resource/game.res.json", "resource/", this.onConfigComplete, this.onConfigError, this);
     };
     Main.prototype.onConfigComplete = function () {
         var strArr = ["game"];
         RES.createGroup("preLoadAll", strArr);
-        uniLib.UIMgr.instance.showProcessBar(null, 10, 100, "准备加载资源组...", "", true);
+        uniLib.UIMgr.instance.showProcessBar(null, 10, 100, "Preparing to load resource groups...", "", true);
         uniLib.ResLoadMgr.instance.load("preLoadAll", this.onResourceLoadComplete, this.onResourceLoadError, this);
     };
     Main.prototype.onConfigError = function (url, resRoot) {
         console.log("资源配置加载失败", url, resRoot);
-        uniLib.UIMgr.instance.showProcessBar(null, 1, 100, "资源配置文件加载失败...", "", true);
+        uniLib.UIMgr.instance.showProcessBar(null, 1, 100, "The resource configuration file failed to load...", "", true);
     };
     /**
      * 资源组加载出错
@@ -227,8 +227,8 @@ var Main = (function (_super) {
         }
     };
     Main.prototype.preLoadEnd = function () {
-        uniLib.Console.log("资源全部加载完毕!");
-        uniLib.UIMgr.instance.showProcessBar(null, 93, 100, "正在进入...", "");
+        uniLib.Console.log("All resources are loaded!");
+        uniLib.UIMgr.instance.showProcessBar(null, 93, 100, "entering...", "");
         if (uniLib.Global.screenWidth / uniLib.Global.screenHeight < 0.5) {
             game.GameConsts.is_iPhoneX = true;
         }
@@ -340,4 +340,4 @@ var Main = (function (_super) {
     return Main;
 }(egret.DisplayObjectContainer));
 __reflect(Main.prototype, "Main");
-// 7777
+// 6666

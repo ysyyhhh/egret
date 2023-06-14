@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RewardViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ui="ui.*" states="up,down,disabled">
+	<e:Group id="closeLayer" left="0" right="0" top="0" bottom="0"/>
+	<e:Group width="720" height="545" horizontalCenter="0" verticalCenter="-100">
+		<e:Image id="bg" horizontalCenter="0" verticalCenter="0" touchEnabled="false" source="light_png" anchorOffsetX="220.5" anchorOffsetY="227.5"/>
+		<e:Image horizontalCenter="0" top="-54" touchEnabled="false" source="biaoti"/>
+		<e:Image horizontalCenter="0.5" top="-32" touchEnabled="false" visible="true" source="biaoti_gongxihuode"/>
+		<e:Image id="chipsIcon" verticalCenter="-30.5" scaleX="1.5" scaleY="1.5" touchEnabled="false" horizontalCenter="0" source="gold"/>
+		<e:BitmapLabel id="chipsLabel" text="x10" horizontalCenter="0" bottom="201" touchEnabled="false" font="reward_font_fnt"/>
+		<ui:Button id="doubleReceiveBtn" interactive="bright" label="" scaleX="1" scaleY="1" bottom="-28" horizontalCenter="0">
+			<ui:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shuangbeilignqu"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</ui:skinName>
+		</ui:Button>
+	</e:Group>
+
+	<e:Group id="misTouchLayer" height="60" left="0" right="0" verticalCenter="250">
+		<e:Button id="receiveBtn" label="" horizontalCenter="0">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_lingqu"/>
+				<e:Label id="labelDisplay" size="32" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="AdItemNotTitleSkin" width="180" height="180" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="adbg" source="ad-gridbg" scale9Grid="43,36,33,37" left="0" right="0" top="0" bottom="0"/>
+	<e:Image id="adImage" touchEnabled="false" width="170" height="170" x="3" y="3"/>
+	<e:Label id="adLabel_del" text="" anchorOffsetY="0" textAlign="center" touchEnabled="false" size="23" textColor="0x000000" bold="true" left="0" right="0" top="0" bottom="0" visible="false"/>
+</e:Skin>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SiginViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:ui="ui.*" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing" states="up,down,disabled">
+	<e:Group id="closeLayer" left="0" top="0" right="0" bottom="0" locked="true"/>
+	<e:Group width="642" height="722" horizontalCenter="0" anchorOffsetX="0" verticalCenter="-168" visible="true">
+		<e:Image left="0" right="0" top="0" bottom="0" visible="true" source="kk_red" scale9Grid="35,30,7,14"/>
+		<e:Image horizontalCenter="0.5" top="-94" source="biaoti"/>
+		<e:Image horizontalCenter="0" top="-79" x="233" y="-74" visible="true" source="word_meiriqiandao"/>
+		<e:Image horizontalCenter="0" top="21" source="word_meiriqiandaosongjiangli"/>
+		<e:Group width="407" height="50" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0.5" top="54">
+			<e:Image scaleX="1" scaleY="1" source="kk4" left="0" right="0" top="0" bottom="0" visible="true"/>
+			<e:Label id="totalSinginLabel" text="已累计签到2天" horizontalCenter="0" verticalCenter="0"/>
+		</e:Group>
+		<e:Group left="25" right="25" top="116" bottom="190">
+			<e:Button id="signDayBtn1" label="" x="60" y="33" skinName="SiginItemSkin"/>
+			<e:Button id="signDayBtn2" label="" x="70" y="43" skinName="SiginItemSkin"/>
+			<e:Button id="signDayBtn3" label="" x="80" y="53" skinName="SiginItemSkin"/>
+			<e:Button id="signDayBtn4" label="" x="90" y="63" skinName="SiginItemSkin"/>
+			<e:Button id="signDayBtn5" label="" x="100" y="73" skinName="SiginItemSkin"/>
+			<e:Button id="signDayBtn6" label="" x="110" y="83" skinName="SiginItemSkin"/>
+			<e:layout>
+				<e:TileLayout requestedRowCount="2" requestedColumnCount="3" horizontalAlign="center" verticalAlign="top" rowAlign="justifyUsingHeight" columnAlign="justifyUsingWidth" verticalGap="0" horizontalGap="0"/>
+			</e:layout>
+		</e:Group>
+		<e:Group height="170" left="25" right="25" anchorOffsetY="0" y="537">
+			<e:Image source="kk_diqitian"/>
+		</e:Group>
+
+		<ui:Button id="doubleReceiveBtn" interactive="bright" label="" bottom="-115" horizontalCenter="0" x="186" y="609" scaleX="1" scaleY="1">
+			<ui:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_shuangbeilignqu"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</ui:skinName>
+
+		</ui:Button>
+
+	</e:Group>
+	<e:Group id="misTouchLayer" height="60" verticalCenter="337" alpha="1" width="188" horizontalCenter="0">
+		<ui:Button id="receiveBtn" interactive="bright" label="" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0" touchChildren="false" touchEnabled="false">
+			<ui:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_lingqu"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+				</e:Skin>
+			</ui:skinName>
+
+		</ui:Button>
+	</e:Group>
+	<ui:Button id="closeBtn" interactive="bright" label="" top="20" left="30">
+		<ui:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_fanhui"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</ui:skinName>
+	</ui:Button>
+
+
+
+</e:Skin>

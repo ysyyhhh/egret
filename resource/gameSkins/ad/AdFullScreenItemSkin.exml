@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="AdFullScreenItemSkin" width="226" height="269" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="adbg" scale9Grid="43,36,33,37" bottom="0" top="0" left="0" source="ad-item-frame" right="0" touchEnabled="false"/>
+	<e:Image id="adImage" touchEnabled="false" anchorOffsetX="0" anchorOffsetY="0" height="200" width="200" x="13" y="13"/>
+	<e:Label id="adLabel" text="游戏名称名称" anchorOffsetY="0" height="35" textAlign="center" touchEnabled="false" size="32" textColor="0x000000" bold="true" anchorOffsetX="0" y="221.5" left="0" right="0" fontFamily="Microsoft YaHei"/>
+</e:Skin>

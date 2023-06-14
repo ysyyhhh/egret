@@ -300,6 +300,21 @@
 			"url": "assets/effect/explode_effect_4.json",
 			"type": "json",
 			"name": "explode_effect_4_json"
+		},
+		{
+			"url": "assets/text/step.png",
+			"type": "image",
+			"name": "text_step_png"
+		},
+		{
+			"url": "assets/text/score.png",
+			"type": "image",
+			"name": "text_score_png"
+		},
+		{
+			"url": "assets/text/next-level.png",
+			"type": "image",
+			"name": "text_next_level_png"
 		}
 	]
 }

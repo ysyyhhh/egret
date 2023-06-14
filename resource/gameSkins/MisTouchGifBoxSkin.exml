@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MisTouchGifBoxSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:ui="ui.*" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="ad-box" scaleX="1.5" scaleY="1.5" horizontalCenter="0.5" verticalCenter="-64.5" touchEnabled="false" anchorOffsetX="49" anchorOffsetY="49.5"/>
+	<e:Label text="金币补给箱" horizontalCenter="0" fontFamily="Microsoft YaHei" size="35" bold="true" verticalCenter="-196.5"/>
+
+	<e:Group id="progressBarGroup" height="65" anchorOffsetX="0" anchorOffsetY="0" width="519" horizontalCenter="0" touchChildren="false" touchEnabled="false" verticalCenter="87.5">
+		<e:Image horizontalCenter="0" verticalCenter="0" source="mistouch_rect2"/>
+		<e:Image id="thumb" verticalCenter="0" horizontalCenter="0" source="mistouch_rect1"/>
+		<e:Rect id="maskRect" top="0" bottom="0" width="10" x="0"/>
+	</e:Group>
+	<e:Image scaleX="1.5" scaleY="1.5" horizontalCenter="251" source="mistouch_tips" rotation="-15" touchEnabled="false" bottom="64"/>
+	<ui:Button id="goBtn" interactive="scale" label="" horizontalCenter="0" anchorOffsetX="149" anchorOffsetY="49.5" bottom="89">
+		<ui:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_mistouch"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</ui:skinName>
+	</ui:Button>
+</e:Skin>

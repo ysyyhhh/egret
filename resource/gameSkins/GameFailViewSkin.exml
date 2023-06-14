@@ -3,14 +3,14 @@
 	<e:Image touchEnabled="false" source="bg_jiesuan_png" left="0" right="0" top="0" bottom="0"/>
 	<e:Group width="549" height="201" verticalCenter="-451.5" horizontalCenter="0.5">
 		<e:Image source="biaoti_tiaozhanshibai1" scaleX="1" scaleY="1"/>
-		<e:Label text="步数已用完" fontFamily="Microsoft YaHei" size="50" horizontalCenter="0.5" verticalCenter="15.5"/>
-		<e:Label id="levelLabel" text="关卡999999" fontFamily="Microsoft YaHei" size="38" horizontalCenter="0" verticalCenter="-68.5" textColor="0xE0AAFF"/>
+		<e:Label text="Steps are exhausted" fontFamily="Microsoft YaHei" size="40" width="100%" horizontalCenter="84" verticalCenter="15.5"/>
+		<e:Label id="levelLabel" text="Level999999" fontFamily="Microsoft YaHei" size="38" horizontalCenter="0" verticalCenter="-68.5" textColor="0xE0AAFF"/>
 	</e:Group>
 	<e:Group height="403" verticalCenter="-174.5" left="50" right="50">
-		<e:Label text="分数" size="35" fontFamily="Microsoft YaHei" textColor="0xFFCC00" bold="true" horizontalCenter="0" y="32"/>
-		<e:Label id="scoreLabel" text="999999" size="45" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0.5" x="285" y="80" textColor="0xFFEC1C"/>
-		<e:Label text="最佳" size="35" fontFamily="Microsoft YaHei" textColor="0xFFCC00" bold="true" horizontalCenter="0" x="275" y="167" scaleX="1" scaleY="1"/>
-		<e:Label text="999999" size="45" fontFamily="Microsoft YaHei" bold="true" horizontalCenter="0.5" x="227" y="219" id="bestScoreLabel" scaleX="1" scaleY="1" textColor="0xFFEC1C"/>
+		<e:Label text="Score" size="35" fontFamily="Microsoft YaHei" textColor="0xFFCC00" bold="true" horizontalCenter="0" y="32"/>
+		<e:Label id="scoreLabel" text="999999" size="45"  bold="true" horizontalCenter="0.5" x="285" y="80" textColor="0xFFEC1C"/>
+		<e:Label text="Best" size="35" fontFamily="Microsoft YaHei" textColor="0xFFCC00" bold="true" horizontalCenter="0" x="275" y="167" scaleX="1" scaleY="1"/>
+		<e:Label text="999999" size="45"  bold="true" horizontalCenter="0.5" x="227" y="219" id="bestScoreLabel" scaleX="1" scaleY="1" textColor="0xFFEC1C"/>
 		<!-- <e:Group width="567" height="61" horizontalCenter="0" y="310"> -->
 			<!-- <e:Label id="chipsLabel" text="+9999999999999999" textColor="0xFFEC1C" verticalCenter="0" x="30" size="45" bold="true"/> -->
 			<!-- <e:Image x="153" source="gold" y="0"/>

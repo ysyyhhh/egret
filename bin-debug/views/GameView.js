@@ -34,6 +34,11 @@ var game;
             _this.lastTipsTime = 0;
             _this.curScore = 0;
             //------------------------------------------------------------------------------
+            // turn
+            //------------------------------------------------------------------------------
+            _this.isTurnMode = true
+            _this.isBot = false
+            //------------------------------------------------------------------------------
             // 消除
             //------------------------------------------------------------------------------
             _this.clearBallCount = 0;
@@ -184,6 +189,7 @@ var game;
             this.updateGameInfo();
             this.lastOpTime = (new Date()).valueOf();
             this.lastTipsTime = (new Date()).valueOf();
+
         };
         //------------------------------------------------------------------------------
         GameView.prototype.resetInit = function () {
@@ -452,6 +458,8 @@ var game;
                 this.guideFingerImage.y = guideBall.localPos.y;
                 var posTween = egret.Tween.get(this.guideFingerImage, { loop: true });
                 var alphaTween = egret.Tween.get(this.guideFingerImage, { loop: true });
+
+
                 var sumTime = 0;
                 this.guideLineShape.graphics.lineStyle(game.GameConsts.LineSize, game.GameConsts.LineColors[guideBall.colorValue - 1], 1);
                 this.guideLineShape.graphics.moveTo(guideBall.localPos.x, guideBall.localPos.y);
@@ -865,6 +873,7 @@ var game;
         GameView.prototype.clearup = function () {
             if (null == this.selectedBall)
                 return;
+            console.log("clearup")
             var targetX = this.selectedBall.display.x;
             var targetY = this.selectedBall.display.y;
             this.clearBallCount = 0;
@@ -1026,7 +1035,7 @@ var game;
             if(this.roundItems.length <= 0) return
             for (var i = 0; i < this.roundItems.length; i++) {
                 var item = this.roundItems[i];
-                console.log(item)
+                // console.log(item)
                 if (item.score > 0) {
                     isWin = false;
                 }
@@ -1035,11 +1044,13 @@ var game;
                 game.GameInfo.instance.curScore = game.GameInfo.instance.curScore + (this.curStep * 100);
                 this.curStep = 0;
                 this.updateGameInfo();
+                this.type = game.EventConsts.EVENT_GAME_SUCCESS;
                 uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_SUCCESS);
             }
             else {
                 game.GameInfo.instance.saveGameMatchup(this.curStep, this.balls, this.roundItems);
                 if (this.curStep == 0) {
+                    console.log("chekcWin")
                     uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_STEP_NOTENOUGH);
                 }
             }
@@ -1047,25 +1058,146 @@ var game;
             if (game.GameInfo.instance.maxScore < game.GameInfo.instance.curScore) {
                 userScore = game.GameInfo.instance.curScore;
             }
-            var userData = new Array();
-            console.log("?????")
-            userData.push({ key: "score", value: userScore.toString() });
-            userData.push({ key: "score", value: "123" });
+            // return isWin
+            // var userData = new Array();
+            // console.log("?????")
+            // userData.push({ key: "score", value: userScore.toString() });
+            // userData.push({ key: "score", value: "123" });
             // window.platform.customInterface("friendrankUpdateData", userData);
         };
+        GameView.prototype.calScores = function (newBalls) {
+            var combo = false;
+            var same = 0;
+            var score = 0;
+            for (let i = 0; i < newBalls.length; i++) {
+                score += newBalls[i].digitValue;
+                if (i != 0) {
+                    if(newBalls[i].digitValue == newBalls[i-1].digitValue){
+                        if (combo) {
+                            score += newBalls[i].digitValue * 2;
+                            continue;
+                        } else {
+                            same++;
+                            if (same == 3) {
+                                combo = true;
+                                score += newBalls[i].digitValue * 4;
+                            }
+                        }
+                    } else {
+                        same = 1;
+                    }
+                }
+            }
+            return score
+        }
+        GameView.prototype.findBotPathDFS = function (row, col, newBalls,maxBalls,vis) {
+            var x = row;
+            var y = col;
+            // console.log(row,col)
+            var dx = [0, 0, 1, 1, 1, -1, -1, -1]
+            var dy = [1, -1, 0, 1, -1, 0, 1, -1]
+            ball = this.getBall(x, y)
+            newBalls.push(ball)
+            var f = false
+            for (let i = 0; i < 8; i++) {
+                var nx = x + dx[i];
+                var ny = y + dy[i];
+                if (nx < 0 || nx >= 6 || ny < 0 || ny >= 6) continue;
+                if(vis[nx][ny] == true) continue;
+                newBall = this.getBall(nx, ny)
+                if (newBall == null) continue;
+                if (newBall.colorValue != ball.colorValue) continue;
+                vis[nx][ny] = true 
+                f = true
+                this.findBotPathDFS(nx, ny, newBalls, maxBalls, vis)
+                newBalls.pop()
+                vis[nx][ny] = false
+            }
+            if (f == false) {
+
+                if (this.calScores(newBalls) > this.calScores(maxBalls) ) {
+                    var len = maxBalls.length
+                    while(len--) maxBalls.pop()
+                    for (let i = 0; i < newBalls.length; i++){
+                        maxBalls.push(newBalls[i])
+                    }
+                }
+                return 
+            }
+        }
+        GameView.prototype.autoFindBotPaths = function () {
+            maxBalls = []
+            maxScore = 0
+            for (var row = 0; row < 6; row++) {
+                for (var col = 0; col < 6; col++) {
+                    var newBalls = [];
+                    var vis = new Array(6)
+                    for (let i = 0; i < 6; i++) {
+                        vis[i] = new Array(6)
+                        for (let j = 0; j < 6; j++) {
+                            vis[i][j] = false
+                        }
+                    }
+                    vis[row][col] = true
+                    this.findBotPathDFS(row, col, newBalls,maxBalls,vis);
+                }
+            }
+            console.log(maxBalls)
+            console.log(this.calScores(maxBalls))
+            return maxBalls;
+        }
+        GameView.prototype.botPlay = async function() {
+            if (this.isBot == false) return 
+            console.log("botPlay")
+            // return 
+            // var balls = this.autoFindPaths();
+            var balls = this.autoFindBotPaths();
+            if (balls.length < 3) {
+                this.isBot = false
+                return
+            }
+            console.log(balls)
+            this.guideLineShape = new egret.Shape();
+            this.shapeLayer.addChild(this.guideLineShape);
+            this.guideLineShape.graphics.clear();
+            var sumTime = 0;
+            this.guideLineShape.graphics.lineStyle(game.GameConsts.LineSize, game.GameConsts.LineColors[balls[0].colorValue - 1], 1);
+            this.guideLineShape.graphics.moveTo(balls[0].localPos.x, balls[0].localPos.y);
+            this.addSelectedBall(balls[0]);
+            this.playTracks();
+            for (var i = 1; i < balls.length; i++) {
+                var ball = balls[i];
+                
+                sumTime += 500;
+                await new Promise(done => setTimeout(() => done(), 70 + Math.random() * 300));
+                this.addSelectedBall(balls[i]);
+                this.guideLineShape.graphics.lineTo(ball.localPos.x, ball.localPos.y);
+            }
+            this.guideLineShape.graphics.endFill();
+            await new Promise(done => setTimeout(() => done(), 70+Math.random() * 200));
+            this.guideLineShape.graphics.clear();
+            this.clearup();
+            this.isBot = false
+        }
         //------------------------------------------------------------------------------
         GameView.prototype.updateFrame = function () {
             if (game.GameInfo.instance.needGuide && this.curGuideStep <= 2)
                 return;
             var curTime = (new Date()).valueOf();
-            if (curTime - this.lastOpTime > 3500 && null == this.selectedBall && null == this.guideBall && null == this.guideEffect) {
+            if (curTime - this.lastOpTime > 1500 && null == this.selectedBall && null == this.guideBall && null == this.guideEffect) {
                 this.lastOpTime = curTime;
-                var balls = this.autoFindPaths();
-                if (balls && balls.length >= 3) {
-                    this.guideBall = balls[0];
-                    this.playGuideEffect();
+                // var balls = this.autoFindPaths();
+                // if (balls && balls.length >= 3) {
+                //     this.guideBall = balls[0];
+                //     this.playGuideEffect();
+                // }
+                if (this.isTurnMode) {
+                    this.botPlay();
                 }
             }
+            // ----
+
+            // ----
             if (curTime - this.lastTipsTime > 8000) {
                 this.lastTipsTime = curTime;
                 this.showTipsAction();
@@ -1168,6 +1300,7 @@ var game;
         };
         //------------------------------------------------------------------------------
         GameView.prototype.onTouchEnd = function (e) {
+            console.log("onTouchEnd")
             this.lastOpTime = (new Date()).valueOf();
             this.lastTipsTime = (new Date()).valueOf();
             this.hideTipsAction();
@@ -1213,11 +1346,14 @@ var game;
                     this.selectedBall = null;
                     this.hideComboInfo();
                     this.lineShape.graphics.clear();
-                    GX.Tips.showTips("请根据引导操作!");
+                    GX.Tips.showTips("Please operate according to the guide!");
                     return;
                 }
             }
             this.clearup();
+            if(this.isBot == false){
+                this.isBot = true
+            }
         };
         //------------------------------------------------------------------------------
         GameView.prototype.drawSelectedBallLines = function (touchX, touchY) {
@@ -1234,6 +1370,7 @@ var game;
                 var ball = this.selectedBalls[i];
                 this.lineShape.graphics.lineTo(ball.display.x, ball.display.y);
             }
+            // if(this.isBot == false)
             var localX = touchX - this.worldPos.x;
             var localY = touchY - this.worldPos.y;
             this.lineShape.graphics.lineTo(localX, localY);
@@ -1447,100 +1584,100 @@ var game;
             }
         };
         //------------------------------------------------------------------------------
-        GameView.prototype.onVideoAdCallback = function (status) {
-            this.lastTipsTime = (new Date()).valueOf();
-            this.hideTipsAction();
-            uniLib.SoundMgr.instance.resumeBgMusic();
-            if (this.showVideoTimeout) {
-                egret.clearTimeout(this.showVideoTimeout);
-                this.showVideoTimeout = null;
-            }
-            this.isVideoShowed = false;
-            if (status == 1) {
-                var addStep = game.TableData.tableGameConfig.chipsRewardStep[0];
-                this.curStep += addStep;
-                uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-            }
-            else if (status == 0) {
-                // 视频未看完
-                GX.Tips.showTips("完整观看完视频才能增加步数");
-            }
-            else {
-                GX.Tips.showTips("获取视频广告失败:" + status);
-            }
-        };
-        //------------------------------------------------------------------------------
-        GameView.prototype.onVideoAdCallbackForNotenough = function (status) {
-            var _this = this;
-            this.lastTipsTime = (new Date()).valueOf();
-            this.hideTipsAction();
-            uniLib.SoundMgr.instance.resumeBgMusic();
-            if (this.showVideoTimeout) {
-                egret.clearTimeout(this.showVideoTimeout);
-                this.showVideoTimeout = null;
-            }
-            var self = this;
-            this.isVideoShowed = false;
-            if (status == 1) {
-                var addStep = game.TableData.tableGameConfig.videoRewardStep;
-                this.curStep += addStep;
-                uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-            }
-            else if (status == 0) {
-                // 视频未看完
-                // GX.Tips.showTips("完整观看完视频才能增加步数");
-                uniLib.AdPlat.instance.showBanner();
-                GX.Tips.showPopup("完整观看完视频才能增加步数, 是否继续观看视频", function () {
-                    uniLib.AdPlat.instance.hideBanner();
-                    if (!self.isVideoShowed) {
-                        self.isVideoShowed = true;
-                        uniLib.SoundMgr.instance.pauseBgMusic();
-                        if (uniLib.Global.isVivogame)
-                            window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForNotenough, _this);
-                        else
-                            uniLib.AdPlat.instance.showRewardedVideo(self.onVideoAdCallbackForNotenough, self);
-                        self.showVideoTimeout = egret.setTimeout(function () {
-                            self.isVideoShowed = false;
-                            if (self.showVideoTimeout) {
-                                egret.clearTimeout(self.showVideoTimeout);
-                                self.showVideoTimeout = null;
-                            }
-                        }, self, 3000);
-                    }
-                    // let addStep = TableData.tableGameConfig.videoRewardStep;
-                    // self.curStep += addStep;
-                    // uniLib.EventListener.getInstance().dispatchEventWith(EventConsts.EVENT_UPDATE_GAME_INFO);
-                }, function () {
-                    uniLib.AdPlat.instance.hideBanner();
-                    uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
-                }, this, true);
-            }
-            else {
-                GX.Tips.showTips("获取视频广告失败:" + status);
-                uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
-            }
-        };
-        //------------------------------------------------------------------------------
-        GameView.prototype.onVideoAdCallbackForReduce = function (status) {
-            this.lastTipsTime = (new Date()).valueOf();
-            this.hideTipsAction();
-            uniLib.SoundMgr.instance.resumeBgMusic();
-            if (this.showVideoTimeout) {
-                egret.clearTimeout(this.showVideoTimeout);
-                this.showVideoTimeout = null;
-            }
-            this.isVideoShowed = false;
-            if (status == 1) {
-                this.setFreeReduce(true);
-            }
-            else if (status == 0) {
-                // 视频未看完
-                GX.Tips.showTips("视频未看完");
-            }
-            else {
-                GX.Tips.showTips("获取视频广告失败:" + status);
-            }
-        };
+        // GameView.prototype.onVideoAdCallback = function (status) {
+        //     this.lastTipsTime = (new Date()).valueOf();
+        //     this.hideTipsAction();
+        //     uniLib.SoundMgr.instance.resumeBgMusic();
+        //     if (this.showVideoTimeout) {
+        //         egret.clearTimeout(this.showVideoTimeout);
+        //         this.showVideoTimeout = null;
+        //     }
+        //     this.isVideoShowed = false;
+        //     if (status == 1) {
+        //         var addStep = game.TableData.tableGameConfig.chipsRewardStep[0];
+        //         this.curStep += addStep;
+        //         uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
+        //     }
+        //     else if (status == 0) {
+        //         // 视频未看完
+        //         GX.Tips.showTips("完整观看完视频才能增加步数");
+        //     }
+        //     else {
+        //         GX.Tips.showTips("获取视频广告失败:" + status);
+        //     }
+        // };
+        // //------------------------------------------------------------------------------
+        // GameView.prototype.onVideoAdCallbackForNotenough = function (status) {
+        //     var _this = this;
+        //     this.lastTipsTime = (new Date()).valueOf();
+        //     this.hideTipsAction();
+        //     uniLib.SoundMgr.instance.resumeBgMusic();
+        //     if (this.showVideoTimeout) {
+        //         egret.clearTimeout(this.showVideoTimeout);
+        //         this.showVideoTimeout = null;
+        //     }
+        //     var self = this;
+        //     this.isVideoShowed = false;
+        //     if (status == 1) {
+        //         var addStep = game.TableData.tableGameConfig.videoRewardStep;
+        //         this.curStep += addStep;
+        //         uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
+        //     }
+        //     else if (status == 0) {
+        //         // 视频未看完
+        //         // GX.Tips.showTips("完整观看完视频才能增加步数");
+        //         uniLib.AdPlat.instance.showBanner();
+        //         GX.Tips.showPopup("完整观看完视频才能增加步数, 是否继续观看视频", function () {
+        //             uniLib.AdPlat.instance.hideBanner();
+        //             if (!self.isVideoShowed) {
+        //                 self.isVideoShowed = true;
+        //                 uniLib.SoundMgr.instance.pauseBgMusic();
+        //                 if (uniLib.Global.isVivogame)
+        //                     window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForNotenough, _this);
+        //                 else
+        //                     uniLib.AdPlat.instance.showRewardedVideo(self.onVideoAdCallbackForNotenough, self);
+        //                 self.showVideoTimeout = egret.setTimeout(function () {
+        //                     self.isVideoShowed = false;
+        //                     if (self.showVideoTimeout) {
+        //                         egret.clearTimeout(self.showVideoTimeout);
+        //                         self.showVideoTimeout = null;
+        //                     }
+        //                 }, self, 3000);
+        //             }
+        //             // let addStep = TableData.tableGameConfig.videoRewardStep;
+        //             // self.curStep += addStep;
+        //             // uniLib.EventListener.getInstance().dispatchEventWith(EventConsts.EVENT_UPDATE_GAME_INFO);
+        //         }, function () {
+        //             uniLib.AdPlat.instance.hideBanner();
+        //             uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
+        //         }, this, true);
+        //     }
+        //     else {
+        //         GX.Tips.showTips("获取视频广告失败:" + status);
+        //         uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
+        //     }
+        // };
+        // //------------------------------------------------------------------------------
+        // GameView.prototype.onVideoAdCallbackForReduce = function (status) {
+        //     this.lastTipsTime = (new Date()).valueOf();
+        //     this.hideTipsAction();
+        //     uniLib.SoundMgr.instance.resumeBgMusic();
+        //     if (this.showVideoTimeout) {
+        //         egret.clearTimeout(this.showVideoTimeout);
+        //         this.showVideoTimeout = null;
+        //     }
+        //     this.isVideoShowed = false;
+        //     if (status == 1) {
+        //         this.setFreeReduce(true);
+        //     }
+        //     else if (status == 0) {
+        //         // 视频未看完
+        //         GX.Tips.showTips("视频未看完");
+        //     }
+        //     else {
+        //         GX.Tips.showTips("获取视频广告失败:" + status);
+        //     }
+        // };
         //------------------------------------------------------------------------------
         GameView.prototype.setFreeReduce = function (state) {
             this.freeReduceState = state;
@@ -1552,29 +1689,29 @@ var game;
             var self = this;
             var data = evt.data;
             if (evt.type == game.EventConsts.EVENT_STEP_NOTENOUGH) {
-                uniLib.AdPlat.instance.showBanner();
-                var addStep = game.TableData.tableGameConfig.videoRewardStep;
-                GX.Tips.showPopup("步数不足, 是否确定观看视频增加" + addStep + "步", function () {
-                    uniLib.AdPlat.instance.hideBanner();
-                    if (!_this.isVideoShowed) {
-                        _this.isVideoShowed = true;
-                        uniLib.SoundMgr.instance.pauseBgMusic();
-                        if (uniLib.Global.isVivogame)
-                            window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForNotenough, _this);
-                        else
-                            uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallbackForNotenough, _this);
-                        _this.showVideoTimeout = egret.setTimeout(function () {
-                            self.isVideoShowed = false;
-                            if (self.showVideoTimeout) {
-                                egret.clearTimeout(self.showVideoTimeout);
-                                self.showVideoTimeout = null;
-                            }
-                        }, _this, 3000);
-                    }
-                }, function () {
-                    uniLib.AdPlat.instance.hideBanner();
-                    uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
-                }, this, true);
+                // uniLib.AdPlat.instance.showBanner();
+                // var addStep = game.TableData.tableGameConfig.videoRewardStep;
+                // GX.Tips.showPopup("步数不足, 是否确定观看视频增加" + addStep + "步", function () {
+                //     uniLib.AdPlat.instance.hideBanner();
+                //     if (!_this.isVideoShowed) {
+                //         _this.isVideoShowed = true;
+                //         uniLib.SoundMgr.instance.pauseBgMusic();
+                //         if (uniLib.Global.isVivogame)
+                //             window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForNotenough, _this);
+                //         else
+                //             uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallbackForNotenough, _this);
+                //         _this.showVideoTimeout = egret.setTimeout(function () {
+                //             self.isVideoShowed = false;
+                //             if (self.showVideoTimeout) {
+                //                 egret.clearTimeout(self.showVideoTimeout);
+                //                 self.showVideoTimeout = null;
+                //             }
+                //         }, _this, 3000);
+                //     }
+                // }, function () {
+                    // uniLib.AdPlat.instance.hideBanner();
+                uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
+                // }, this, true);
             }
         };
         return GameView;
