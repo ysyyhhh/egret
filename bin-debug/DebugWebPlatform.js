@@ -19,7 +19,7 @@ var game;
         // 平台初始化
         //---------------------------------------------------------------------------------------------------
         DebugWebPlatform.prototype.init = function (callback, thisObj) {
-            window["King_SDK_Manager"].init(egret.MainContext.instance.stage);
+            // window["King_SDK_Manager"].init(egret.MainContext.instance.stage);
             if (callback)
                 callback.call(thisObj);
         };

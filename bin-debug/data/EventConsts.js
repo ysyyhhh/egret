@@ -7,10 +7,6 @@ var game;
         function EventConsts() {
         }
         /**
-         * 广告数据已加载完成
-         */
-        EventConsts.EVENT_ADDATA_LOADED = "ADDATA_LOADED";
-        /**
         * GAME_OVER
          */
         EventConsts.EVENT_GAME_OVER = "GAME_OVER";

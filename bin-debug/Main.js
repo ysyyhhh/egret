@@ -63,37 +63,6 @@ var Main = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Main.onShareMessageCallback = function (result) {
-        // if(result)
-        // {
-        //     let curTimestamp = (new Date()).valueOf();
-        //     let lastStrTime = GX.timestampToString(game.GameInfo.instance.sharedFristTimeInDay);
-        //     let curStrTime = GX.timestampToString(curTimestamp);
-        //     let lastTimeValues = lastStrTime.split(" ");
-        //     let curTimeValues = curStrTime.split(" ");
-        //     lastTimeValues = lastTimeValues[0].split("-");
-        //     curTimeValues = curTimeValues[0].split("-");
-        //     if(parseInt(curTimeValues[0]) - parseInt(lastTimeValues[0]) == 0 && parseInt(curTimeValues[1]) - parseInt(lastTimeValues[1]) == 0)
-        //     {
-        //         let day = parseInt(curTimeValues[2]) - parseInt(lastTimeValues[2]);
-        //         if(day >= 1)
-        //         {
-        //             game.GameInfo.instance.sharedFristTimeInDay = curTimestamp;
-        //             game.GameInfo.instance.sharedTimesInDay = 0;
-        //         }
-        //     }
-        //     else
-        //     {
-        //         game.GameInfo.instance.sharedFristTimeInDay = curTimestamp;
-        //         game.GameInfo.instance.sharedTimesInDay = 0;
-        //     }
-        //     game.GameInfo.instance.sharedTimesInDay++;
-        //     game.GameInfo.save();
-        //     if(game.GameInfo.instance.sharedTimesInDay >= 5) return;
-        //     // 发放奖励
-        //     GX.PopUpManager.addPopUp(new game.RewardView(game.GameConsts.TASK_REWARD_LIST[0], null, null, true), true, 0.6, GX.PopUpEffect.CENTER_S);
-        // }
-    };
     Main.prototype.start = function () {
         var assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
@@ -118,10 +87,10 @@ var Main = (function (_super) {
                 return;
             uniLib.SoundMgr.instance.resumeBgMusic();
         };
-        if (null == window.platform) {
-            window.platform = new game.DebugWebPlatform();
-        }
-        window.platform.init();
+        // if (null == window.platform) {
+        //     window.platform = new game.DebugWebPlatform();
+        // }
+        // window.platform.init();
         var initData = new uniLib.InitOptions();
         initData.debug = (uniLib.BrowersUtils.GetRequest("debug") == "true") ? true : false;
         initData.standAlone = true;
@@ -144,7 +113,7 @@ var Main = (function (_super) {
         var oldResVersion = uniLib.Utils.getLocalStorage("MAGICDIGIT_RESVERSION", "");
         // if (oldResVersion != curResVer) {
             console.log("清除资源缓存");
-            window.platform.clearResCache();
+            // window.platform.clearResCache();
             uniLib.Utils.setLocalStorage("MAGICDIGIT_RESVERSION", curResVer);
         // }
         var curStorageVer = game.Config.CURRENT_GAMEINFO_VERSION;

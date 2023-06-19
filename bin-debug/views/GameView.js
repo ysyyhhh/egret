@@ -1061,12 +1061,6 @@ var game;
             if (game.GameInfo.instance.maxScore < game.GameInfo.instance.curScore) {
                 userScore = game.GameInfo.instance.curScore;
             }
-            // return isWin
-            // var userData = new Array();
-            // console.log("?????")
-            // userData.push({ key: "score", value: userScore.toString() });
-            // userData.push({ key: "score", value: "123" });
-            // window.platform.customInterface("friendrankUpdateData", userData);
         };
         GameView.prototype.calScores = function (newBalls) {
             var combo = false;
@@ -1120,7 +1114,6 @@ var game;
                 vis[nx][ny] = false
             }
             if (f == false) {
-
                 if (this.calScores(newBalls) > this.calScores(maxBalls) ) {
                     var len = maxBalls.length
                     while(len--) maxBalls.pop()
@@ -1131,13 +1124,6 @@ var game;
                 return 
             }
         }
-        function timeLimit(fn, time) {
-            let timer = null;
-            return new Promise((resolve, reject) => {
-              timer = setTimeout(() => reject(new Error('Timed out!')), time);
-              fn()
-            }).finally(() => clearTimeout(timer)); 
-          }
         GameView.prototype.autoFindBotPaths = function () {
             maxBalls = []
             maxScore = 0
@@ -1159,62 +1145,6 @@ var game;
             console.log(this.calScores(maxBalls))
             return maxBalls;
         }
-        function showAlert(message) {
-            const alertBox = document.createElement('div');
-            alertBox.innerHTML = message;
- 
-            alertBox.style.backgroundImage = "url('https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/resource/assets/image/light.png')";
-            alertBox.style.backgroundSize = "cover"; 
-            alertBox.style.backgroundPosition = "center center";
-            alertBox.style.backgroundRepeat = "no-repeat";
-            // alertBox.style.overflow = "hidden";
-
-            alertBox.style.position = 'fixed';
-            // alertBox.style.height = '200px';
-            alertBox.style.top = '50%';
-            alertBox.style.left = '50%';
-            alertBox.style.transform = 'translate(-50%, -50%) scale(0)';
-            alertBox.style.padding = '30px 30px';
-            // alertBox.style.width = "auto";
-            // alertBox.style.height = "100px";
-            
-            alertBox.style.opacity = '0.3';
-
-            alertBox.style.border = "none"
-            // alertBox.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.2)';
-            // alertBox.style.borderRadius = '20px';
-
-            alertBox.style.fontFamily = 'Courier'; 
-            alertBox.style.fontSize = "20px";
-            alertBox.style.color = 'white';
-            // alertBox.style.textAlign = 'center';
-            // alertBox.style.inlineSize = "auto";
-            // alertBox.style.whiteSpace = "nowrap"; 
-            alertBox.style.textAlign = 'center';  
-            alertBox.style.lineHeight = alertBox.style.height; 
-
-            alertBox.style.fontWeight = 'bold';
-            
-
-            document.body.appendChild(alertBox);
-            
-            // 添加动画效果
-            alertBox.animate([
-              { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
-              { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-              { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-              { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 }
-            ], {
-              duration: 1000,
-              easing: 'ease-in-out',
-              delay: 0
-            });
-            
-            // 设置定时器以便在动画结束后删除提示框
-            setTimeout(() => {
-              alertBox.remove();
-            }, 2000);
-        }
         GameView.prototype.showTurnEffect = function (message) {
             console.log("showAlertEffect")
             // let screen = egret.gui.getInstance();
@@ -1223,8 +1153,6 @@ var game;
             var texture = "https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/resource/assets/image/light.png"
             var effectImage = new eui.Image(texture);
 
-            // effectImage.anchorOffsetX = effectImage.width * 0.5;
-            // effectImage.anchorOffsetY = effectImage.height * 0.5;
             effectImage.x = centerX * 0.3;
             effectImage.y = centerY * 0.5 - effectImage.height * 0.5;
             effectImage.touchEnabled = false;
@@ -1240,10 +1168,6 @@ var game;
             this.addChild(effectImage);
             this.addChild(effectLabel);
 
-
-            // effectImage.scaleX = effectImage.scaleY = 0;
-            // effectImage.alpha = 1;
-
             egret.Tween.get(effectImage).to({ scaleX: 1.0, scaleY: 1.0 }, 300).to({ alpha: 0 }, 300).call(function (target) {
                 egret.Tween.removeTweens(target);
                 target.parent.removeChild(target);
@@ -1255,19 +1179,11 @@ var game;
             }, this, [effectImage]);
 
         }
-        
-        // showAlert("It's my turn！")
-        
         GameView.prototype.botPlay = async function () {
            
             if (this.isBot == false) return 
             console.log("botPlay")
-            // showAlert("It's my turn！")
             this.showTurnEffect("It's my turn！");
-            // wait 1s
-
-            // return 
-            // var balls = this.autoFindPaths();
             var balls = this.autoFindBotPaths();
             if (balls.length < 3) {
                 this.isBot = false
@@ -1303,37 +1219,15 @@ var game;
         }
         //------------------------------------------------------------------------------
         GameView.prototype.updateFrame = function () {
-            // this.showTurnEffect("It's my turn！")
-            // if time > 1s
-            // var curTime = (new Date()).valueOf();
-            // if (curTime - this.lastOpTime > 1500) {
-            //     this.lastOpTime = curTime;
-            //     this.showTurnEffect("It's my turn！")
-            // }
-            // return
-
             if (game.GameInfo.instance.needGuide && this.curGuideStep <= 2)
                 return;
             
             var curTime = (new Date()).valueOf();
             if (curTime - this.lastOpTime > 1500 && null == this.selectedBall && null == this.guideBall && null == this.guideEffect) {
                 this.lastOpTime = curTime;
-                // var balls = this.autoFindPaths();
-                // if (balls && balls.length >= 3) {
-                //     this.guideBall = balls[0];
-                //     this.playGuideEffect();
-                // }
                 if (this.isTurnMode) {
                     this.botPlay();
                 }
-            }
-            // ----
-
-            // ----
-            if (curTime - this.lastTipsTime > 8000) {
-                this.lastTipsTime = curTime;
-                this.showTipsAction();
-                
             }
         };
         //------------------------------------------------------------------------------
@@ -1362,26 +1256,9 @@ var game;
             this.guideBall = null;
         };
         //------------------------------------------------------------------------------
-        GameView.prototype.showTipsAction = function () {
-            // egret.Tween.removeTweens(this.addBtn);
-            // egret.Tween.removeTweens(this.reduceBtn);
-            // this.addBtn.scaleX = this.addBtn.scaleY = 1;
-            // this.reduceBtn.scaleX = this.reduceBtn.scaleY = 1;
-            // egret.Tween.get(this.addBtn, { loop: true }).to({ scaleX: 1.2, scaleY: 1.2 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
-            // egret.Tween.get(this.reduceBtn, { loop: true }).to({ scaleX: 1.2, scaleY: 1.2 }, 200, egret.Ease.sineIn).to({ scaleX: 1, scaleY: 1 }, 250, egret.Ease.sineOut);
-        
-        };
-        GameView.prototype.hideTipsAction = function () {
-            // egret.Tween.removeTweens(this.addBtn);
-            // egret.Tween.removeTweens(this.reduceBtn);
-            // this.addBtn.scaleX = this.addBtn.scaleY = 1;
-            // this.reduceBtn.scaleX = this.reduceBtn.scaleY = 1;
-        };
-        //------------------------------------------------------------------------------
         GameView.prototype.onTouchBegin = function (e) {
             this.lastOpTime = (new Date()).valueOf();
             this.lastTipsTime = (new Date()).valueOf();
-            this.hideTipsAction();
             this.stopGuideEffect();
             if (this.curStep <= 0)
                 return;
@@ -1436,7 +1313,6 @@ var game;
             console.log("onTouchEnd")
             this.lastOpTime = (new Date()).valueOf();
             this.lastTipsTime = (new Date()).valueOf();
-            this.hideTipsAction();
             egret.MainContext.instance.stage.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
             egret.MainContext.instance.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             var touchX = e.stageX;
@@ -1510,24 +1386,6 @@ var game;
             this.lineShape.graphics.endFill();
         };
         //------------------------------------------------------------------------------
-        // public drawDebug()
-        // {
-        //     for(let i = 0; i < this.balls.length; i++)
-        //     {
-        //         let ball:Ball = this.balls[i];
-        //         if(ball.state == 0)
-        //         {
-        //             let bounds:egret.Rectangle = this.balls[i].worldBounds;
-        //             let shape:egret.Shape = new egret.Shape();
-        //             shape.touchEnabled = false;
-        //             shape.graphics.beginFill(0, 0.5);
-        //             shape.graphics.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
-        //             shape.graphics.endFill();
-        //             egret.MainContext.instance.stage.addChild(shape);
-        //         }
-        //     }
-        // }
-        //------------------------------------------------------------------------------
         GameView.prototype.findPaths = function (row, col, newBalls) {
             var inRow = row;
             var inCol = col;
@@ -1578,116 +1436,8 @@ var game;
         };
         //------------------------------------------------------------------------------
         GameView.prototype.onClickTap = function (e) {
-            var _this = this;
             this.lastOpTime = (new Date()).valueOf();
             this.lastTipsTime = (new Date()).valueOf();
-            this.hideTipsAction();
-            var self = this;
-            // if (e.target == this.addBtn) {
-            //     var addStep_1 = game.TableData.tableGameConfig.chipsRewardStep[0];
-            //     var needChips_1 = game.TableData.tableGameConfig.chipsRewardStep[1];
-            //     if (game.GameInfo.instance.curChips >= needChips_1) {
-            //         uniLib.AdPlat.instance.showBanner();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showBannerAdvertisement();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showNativeAdvertisement();
-            //         GX.Tips.showPopup("是否确定花费" + needChips_1 + "金币增加" + addStep_1 + "步", function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //             game.GameInfo.instance.curChips -= needChips_1;
-            //             game.GameInfo.save();
-            //             self.curStep += addStep_1;
-            //             uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-            //         }, function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //         }, this, true);
-            //     }
-            //     else {
-            //         uniLib.AdPlat.instance.showBanner();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showBannerAdvertisement();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showNativeAdvertisement();
-            //         GX.Tips.showPopup("金币不足，是否观看视频增加" + addStep_1 + "步", function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //             if (!_this.isVideoShowed) {
-            //                 _this.isVideoShowed = true;
-            //                 uniLib.SoundMgr.instance.pauseBgMusic();
-            //                 if (uniLib.Global.isVivogame)
-            //                     window.platform.showVideoAdvertisement(null, _this.onVideoAdCallback, _this);
-            //                 else
-            //                     uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallback, _this);
-            //                 _this.showVideoTimeout = egret.setTimeout(function () {
-            //                     self.isVideoShowed = false;
-            //                     if (self.showVideoTimeout) {
-            //                         egret.clearTimeout(self.showVideoTimeout);
-            //                         self.showVideoTimeout = null;
-            //                     }
-            //                 }, _this, 3000);
-            //             }
-            //         }, function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //         }, this, true);
-            //     }
-            // }
-            // else if (e.target == this.reduceBtn) {
-            //     var needChips_2 = game.TableData.tableGameConfig.chipsReduceReward;
-            //     if (game.GameInfo.instance.curChips >= needChips_2) {
-            //         uniLib.AdPlat.instance.showBanner();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showBannerAdvertisement();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showNativeAdvertisement();
-            //         GX.Tips.showPopup("是否确定花费" + needChips_2 + "金币任意消除一个色块", function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //             game.GameInfo.instance.curChips -= needChips_2;
-            //             game.GameInfo.save();
-            //             _this.setFreeReduce(true);
-            //             uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-            //         }, function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //         }, this, true);
-            //     }
-            //     else {
-            //         uniLib.AdPlat.instance.showBanner();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showBannerAdvertisement();
-            //         if (uniLib.Global.isVivogame)
-            //             window.platform.showNativeAdvertisement();
-            //         GX.Tips.showPopup("金币不足，是否观看视频任意消除一次", function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //             if (!_this.isVideoShowed) {
-            //                 _this.isVideoShowed = true;
-            //                 uniLib.SoundMgr.instance.pauseBgMusic();
-            //                 if (uniLib.Global.isVivogame)
-            //                     window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForReduce, _this);
-            //                 else
-            //                     uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallbackForReduce, _this);
-            //                 _this.showVideoTimeout = egret.setTimeout(function () {
-            //                     self.isVideoShowed = false;
-            //                     if (self.showVideoTimeout) {
-            //                         egret.clearTimeout(self.showVideoTimeout);
-            //                         self.showVideoTimeout = null;
-            //                     }
-            //                 }, _this, 3000);
-            //             }
-            //         }, function () {
-            //             uniLib.AdPlat.instance.hideBanner();
-            //             // if(uniLib.Global.isVivogame) window.platform.hideBannerAdvertisement();
-            //         }, this, true);
-            //     }
-            // }
-            // if (e.target == this.settingBtn) {
-            //     // GX.PopUpManager.addPopUp(new game.SettingView(), true, 0.8);
-            //     // console.log("autoFindPaths", this.autoFindPaths());
-            // }
             if (e.target == this.restartBtn) {
                 // GX.PopUpManager.removePopUp(this);
                 // GX.PopUpManager.removePopUp(this, GX.PopUpEffect.CENTER);
@@ -1716,101 +1466,7 @@ var game;
                 this.curGuideStep++;
             }
         };
-        //------------------------------------------------------------------------------
-        // GameView.prototype.onVideoAdCallback = function (status) {
-        //     this.lastTipsTime = (new Date()).valueOf();
-        //     this.hideTipsAction();
-        //     uniLib.SoundMgr.instance.resumeBgMusic();
-        //     if (this.showVideoTimeout) {
-        //         egret.clearTimeout(this.showVideoTimeout);
-        //         this.showVideoTimeout = null;
-        //     }
-        //     this.isVideoShowed = false;
-        //     if (status == 1) {
-        //         var addStep = game.TableData.tableGameConfig.chipsRewardStep[0];
-        //         this.curStep += addStep;
-        //         uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-        //     }
-        //     else if (status == 0) {
-        //         // 视频未看完
-        //         GX.Tips.showTips("完整观看完视频才能增加步数");
-        //     }
-        //     else {
-        //         GX.Tips.showTips("获取视频广告失败:" + status);
-        //     }
-        // };
-        // //------------------------------------------------------------------------------
-        // GameView.prototype.onVideoAdCallbackForNotenough = function (status) {
-        //     var _this = this;
-        //     this.lastTipsTime = (new Date()).valueOf();
-        //     this.hideTipsAction();
-        //     uniLib.SoundMgr.instance.resumeBgMusic();
-        //     if (this.showVideoTimeout) {
-        //         egret.clearTimeout(this.showVideoTimeout);
-        //         this.showVideoTimeout = null;
-        //     }
-        //     var self = this;
-        //     this.isVideoShowed = false;
-        //     if (status == 1) {
-        //         var addStep = game.TableData.tableGameConfig.videoRewardStep;
-        //         this.curStep += addStep;
-        //         uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_UPDATE_GAME_INFO);
-        //     }
-        //     else if (status == 0) {
-        //         // 视频未看完
-        //         // GX.Tips.showTips("完整观看完视频才能增加步数");
-        //         uniLib.AdPlat.instance.showBanner();
-        //         GX.Tips.showPopup("完整观看完视频才能增加步数, 是否继续观看视频", function () {
-        //             uniLib.AdPlat.instance.hideBanner();
-        //             if (!self.isVideoShowed) {
-        //                 self.isVideoShowed = true;
-        //                 uniLib.SoundMgr.instance.pauseBgMusic();
-        //                 if (uniLib.Global.isVivogame)
-        //                     window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForNotenough, _this);
-        //                 else
-        //                     uniLib.AdPlat.instance.showRewardedVideo(self.onVideoAdCallbackForNotenough, self);
-        //                 self.showVideoTimeout = egret.setTimeout(function () {
-        //                     self.isVideoShowed = false;
-        //                     if (self.showVideoTimeout) {
-        //                         egret.clearTimeout(self.showVideoTimeout);
-        //                         self.showVideoTimeout = null;
-        //                     }
-        //                 }, self, 3000);
-        //             }
-        //             // let addStep = TableData.tableGameConfig.videoRewardStep;
-        //             // self.curStep += addStep;
-        //             // uniLib.EventListener.getInstance().dispatchEventWith(EventConsts.EVENT_UPDATE_GAME_INFO);
-        //         }, function () {
-        //             uniLib.AdPlat.instance.hideBanner();
-        //             uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
-        //         }, this, true);
-        //     }
-        //     else {
-        //         GX.Tips.showTips("获取视频广告失败:" + status);
-        //         uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
-        //     }
-        // };
-        // //------------------------------------------------------------------------------
-        // GameView.prototype.onVideoAdCallbackForReduce = function (status) {
-        //     this.lastTipsTime = (new Date()).valueOf();
-        //     this.hideTipsAction();
-        //     uniLib.SoundMgr.instance.resumeBgMusic();
-        //     if (this.showVideoTimeout) {
-        //         egret.clearTimeout(this.showVideoTimeout);
-        //         this.showVideoTimeout = null;
-        //     }
-        //     this.isVideoShowed = false;
-        //     if (status == 1) {
-        //         this.setFreeReduce(true);
-        //     }
-        //     else if (status == 0) {
-        //         // 视频未看完
-        //         GX.Tips.showTips("视频未看完");
-        //     }
-        //     else {
-        //         GX.Tips.showTips("获取视频广告失败:" + status);
-        //     }
-        // };
+
         //------------------------------------------------------------------------------
         GameView.prototype.setFreeReduce = function (state) {
             this.freeReduceState = state;
@@ -1818,33 +1474,8 @@ var game;
         };
         //-----------------------------------------------------------------------------
         GameView.prototype.onEventHandle = function (evt) {
-            var _this = this;
-            var self = this;
-            var data = evt.data;
             if (evt.type == game.EventConsts.EVENT_STEP_NOTENOUGH) {
-                // uniLib.AdPlat.instance.showBanner();
-                // var addStep = game.TableData.tableGameConfig.videoRewardStep;
-                // GX.Tips.showPopup("步数不足, 是否确定观看视频增加" + addStep + "步", function () {
-                //     uniLib.AdPlat.instance.hideBanner();
-                //     if (!_this.isVideoShowed) {
-                //         _this.isVideoShowed = true;
-                //         uniLib.SoundMgr.instance.pauseBgMusic();
-                //         if (uniLib.Global.isVivogame)
-                //             window.platform.showVideoAdvertisement(null, _this.onVideoAdCallbackForNotenough, _this);
-                //         else
-                //             uniLib.AdPlat.instance.showRewardedVideo(_this.onVideoAdCallbackForNotenough, _this);
-                //         _this.showVideoTimeout = egret.setTimeout(function () {
-                //             self.isVideoShowed = false;
-                //             if (self.showVideoTimeout) {
-                //                 egret.clearTimeout(self.showVideoTimeout);
-                //                 self.showVideoTimeout = null;
-                //             }
-                //         }, _this, 3000);
-                //     }
-                // }, function () {
-                    // uniLib.AdPlat.instance.hideBanner();
                 uniLib.EventListener.getInstance().dispatchEventWith(game.EventConsts.EVENT_GAME_OVER);
-                // }, this, true);
             }
         };
         return GameView;

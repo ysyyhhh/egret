@@ -3,15 +3,13 @@
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/libs/modules/assetsmanager/assetsmanager.min.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/libs/modules/game/game.min.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/libs/modules/tween/tween.min.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/libs/modules/promise/promise.min.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/libs/king_sdk/king_sdkManager.min.js"
+		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/libs/modules/promise/promise.min.js"
 	],
 	"game": [
+		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/LoadingUI.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/table/TableSkinConfig.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/AssetAdapter.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/DebugWebPlatform.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/LoadingUI.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/Main.js",
+		"bin-debug/Main.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/ThemeAdapter.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/data/EventConsts.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/data/GameConsts.js",
@@ -26,17 +24,10 @@
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/table/TableSceneLevelConfig.js",
 		"bin-debug/Config.js",
 		"bin-debug/views/GameFailView.js",
-		"bin-debug/views/GameRankView.js",
-		"bin-debug/views/GameSkinView.js",
 		"bin-debug/views/GameSuccessView.js",
 		"bin-debug/views/GameView.js",
-		"bin-debug/views/InquiryEnterGameView.js",
-		"bin-debug/views/MainView.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/MisTouchGifBox.js",
 		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/Track.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/common/ConfirmPanel.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/common/MenuBar.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/common/RoundItem.js",
-		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/common/TipsPanel.js"
+		"https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/bin-debug/views/common/RoundItem.js"
 	]
 }
