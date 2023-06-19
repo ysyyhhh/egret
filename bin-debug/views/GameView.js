@@ -27,7 +27,7 @@ var game;
             _this.winScore = 0;
             _this.winCombo = 0;
             _this.winColorValue = 0;
-            _this.curStep = 0;
+            _this.curStep = 3;
             _this.curGuideStep = 0;
             _this.freeReduceState = false;
             _this.lastOpTime = 0;
@@ -387,7 +387,7 @@ var game;
                 guideBalls.push(this.getBall(5, 5));
                 guideBalls.push(this.getBall(5, 4));
                 guideBalls.push(this.getBall(4, 3));
-                this.guideTipsLabel.text = "连接3个或更多相同色块可消除并获得分数";
+                this.guideTipsLabel.text = "Connect 3 or more of the same color blocks to eliminate and gain points";
                 this.guideTipsLabel.visible = true;
             }
             else if (this.curGuideStep == 2) {
@@ -399,11 +399,11 @@ var game;
                 guideBalls.push(this.getBall(4, 2));
                 guideBalls.push(this.getBall(4, 1));
                 guideBalls.push(this.getBall(5, 0));
-                this.guideTipsLabel.text = "消除3个或更多连续相同的数字可实现连击";
+                this.guideTipsLabel.text = "Eliminating 3 or more consecutive identical numbers enables combos";
                 this.guideTipsLabel.visible = true;
             }
             else if (this.curGuideStep == 3) {
-                this.guideTipsLabel.text = "消除全部颜色目标就能通关";
+                this.guideTipsLabel.text = "Eliminate all color targets to clear the level";
                 this.guideTipsLabel.visible = true;
                 this.twinkleLayer.visible = true;
                 this.twinkleLayer.alpha = 0;
@@ -416,7 +416,7 @@ var game;
                 // maskGroup.visible = true;
             }
             else if (this.curGuideStep == 4) {
-                this.guideTipsLabel.text = "通关时会根据剩余步数计算奖励分数";
+                this.guideTipsLabel.text = "Bonus points are calculated based on the number of steps left in the game";
                 this.guideTipsLabel.visible = true;
                 // let roundLayer:eui.Group = this.skin["roundLayer"];
                 // let maskGroup:eui.Group = this.skin["maskGroup"];
@@ -426,7 +426,7 @@ var game;
                 // maskGroup.visible = true;
             }
             else if (this.curGuideStep == 5) {
-                this.guideTipsLabel.text = "步数用完且颜色目标未完成则游戏结束";
+                this.guideTipsLabel.text = "The game ends when the number of steps runs out and the color object is not completed";
                 this.guideTipsLabel.visible = true;
                 // let roundLayer:eui.Group = this.skin["roundLayer"];
                 // let maskGroup:eui.Group = this.skin["maskGroup"];
@@ -703,6 +703,7 @@ var game;
             info.comboCount = this.winCombo;
             return info;
         };
+
         //------------------------------------------------------------------------------
         GameView.prototype.selecteEffect = function (x, y, colorValue) {
             var texture = RES.getRes("round_hight_" + colorValue);
@@ -948,6 +949,7 @@ var game;
         // 播放消除特效
         //------------------------------------------------------------------------------
         GameView.prototype.playClearupEffects = function (x, y) {
+            console.log("playClearupEffects")
             var roundItem = this.roundItems[this.winColorValue - 1];
             this.track = new game.Track(roundItem, this.winScore, x, y);
             this.track.touchEnabled = false;
@@ -987,6 +989,7 @@ var game;
         };
         //------------------------------------------------------------------------------
         GameView.prototype.playTracksCompleted = function (track, score) {
+            console.log("playTracksCompleted")
             var self = this;
             uniLib.SoundMgr.instance.playSound("hit_sound_mp3", true);
             if (this.bombEffect) {
@@ -1164,18 +1167,18 @@ var game;
             alertBox.style.backgroundSize = "cover"; 
             alertBox.style.backgroundPosition = "center center";
             alertBox.style.backgroundRepeat = "no-repeat";
-            alertBox.style.overflow = "hidden";
+            // alertBox.style.overflow = "hidden";
 
             alertBox.style.position = 'fixed';
             // alertBox.style.height = '200px';
             alertBox.style.top = '50%';
             alertBox.style.left = '50%';
             alertBox.style.transform = 'translate(-50%, -50%) scale(0)';
-            alertBox.style.padding = '15px 30px';
+            alertBox.style.padding = '30px 30px';
             // alertBox.style.width = "auto";
-            alertBox.style.height = "auto";
+            // alertBox.style.height = "100px";
             
-            alertBox.style.opacity = '0.8';
+            alertBox.style.opacity = '0.3';
 
             alertBox.style.border = "none"
             // alertBox.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.2)';
@@ -1184,8 +1187,11 @@ var game;
             alertBox.style.fontFamily = 'Courier'; 
             alertBox.style.fontSize = "20px";
             alertBox.style.color = 'white';
-            
+            // alertBox.style.textAlign = 'center';
+            // alertBox.style.inlineSize = "auto";
             // alertBox.style.whiteSpace = "nowrap"; 
+            alertBox.style.textAlign = 'center';  
+            alertBox.style.lineHeight = alertBox.style.height; 
 
             alertBox.style.fontWeight = 'bold';
             
@@ -1208,11 +1214,56 @@ var game;
             setTimeout(() => {
               alertBox.remove();
             }, 2000);
-          }
-        GameView.prototype.botPlay = async function() {
+        }
+        GameView.prototype.showTurnEffect = function (message) {
+            console.log("showAlertEffect")
+            // let screen = egret.gui.getInstance();
+            let centerX = 340
+            let centerY = 640
+            var texture = "https://cdn.jsdelivr.net/gh/ysyyhhh/egret@1.0/resource/assets/image/light.png"
+            var effectImage = new eui.Image(texture);
+
+            // effectImage.anchorOffsetX = effectImage.width * 0.5;
+            // effectImage.anchorOffsetY = effectImage.height * 0.5;
+            effectImage.x = centerX * 0.3;
+            effectImage.y = centerY * 0.5 - effectImage.height * 0.5;
+            effectImage.touchEnabled = false;
+
+            var effectLabel = new eui.Label()
+            effectLabel.text = message;
+            effectLabel.size = 45;
+            effectLabel.textColor = 0xffffff;
+            effectLabel.textAlign = egret.HorizontalAlign.CENTER;
+            effectLabel.x = centerX - effectLabel.width * 0.3 ;
+            effectLabel.y = centerY - effectLabel.height * 0.9;
+
+            this.addChild(effectImage);
+            this.addChild(effectLabel);
+
+
+            // effectImage.scaleX = effectImage.scaleY = 0;
+            // effectImage.alpha = 1;
+
+            egret.Tween.get(effectImage).to({ scaleX: 1.0, scaleY: 1.0 }, 300).to({ alpha: 0 }, 300).call(function (target) {
+                egret.Tween.removeTweens(target);
+                target.parent.removeChild(target);
+            }, this, [effectImage]);
+
+            egret.Tween.get(effectLabel).to({ scaleX: 1.0, scaleY: 1.0 }, 300).to({ alpha: 0 }, 300).call(function (target) {
+                egret.Tween.removeTweens(target);
+                target.parent.removeChild(target);
+            }, this, [effectImage]);
+
+        }
+        
+        // showAlert("It's my turn！")
+        
+        GameView.prototype.botPlay = async function () {
+           
             if (this.isBot == false) return 
             console.log("botPlay")
-            showAlert("It's my turn！")
+            // showAlert("It's my turn！")
+            this.showTurnEffect("It's my turn！");
             // wait 1s
 
             // return 
@@ -1252,8 +1303,18 @@ var game;
         }
         //------------------------------------------------------------------------------
         GameView.prototype.updateFrame = function () {
+            // this.showTurnEffect("It's my turn！")
+            // if time > 1s
+            // var curTime = (new Date()).valueOf();
+            // if (curTime - this.lastOpTime > 1500) {
+            //     this.lastOpTime = curTime;
+            //     this.showTurnEffect("It's my turn！")
+            // }
+            // return
+
             if (game.GameInfo.instance.needGuide && this.curGuideStep <= 2)
                 return;
+            
             var curTime = (new Date()).valueOf();
             if (curTime - this.lastOpTime > 1500 && null == this.selectedBall && null == this.guideBall && null == this.guideEffect) {
                 this.lastOpTime = curTime;
@@ -1272,6 +1333,7 @@ var game;
             if (curTime - this.lastTipsTime > 8000) {
                 this.lastTipsTime = curTime;
                 this.showTipsAction();
+                
             }
         };
         //------------------------------------------------------------------------------
