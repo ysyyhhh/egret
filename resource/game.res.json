@@ -31,11 +31,6 @@
 			"name": "finger_effect_png"
 		},
 		{
-			"url": "assets/effect/knead_effect.png",
-			"type": "image",
-			"name": "knead_effect_png"
-		},
-		{
 			"url": "assets/effect/track_effect_1.png",
 			"type": "image",
 			"name": "track_effect_1_png"
